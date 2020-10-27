@@ -159,9 +159,9 @@
 // //Function Declarations vs. Expressions
 // //********************
 // //function declaration
-// function percentageOfWorld1(population) {
-//   return (population / 7900) * 100;
-// }
+function percentageOfWorld1(population) {
+  return (population / 7900) * 100;
+}
 // console.log(
 //   `Your country represents ${percentageOfWorld1(
 //     1441
@@ -190,6 +190,15 @@
 //********************
 //Functions Calling Other Functions
 //********************
+function describePopulation(country, population) {
+  return `Your ${country} represents ${percentageOfWorld1(
+    population
+  )} percent of the world population.`;
+}
+
+console.log(describePopulation("China", 1234));
+console.log(describePopulation("America", 12));
+console.log(describePopulation("Europe", 525234));
 //********************
 //Introduction to Arrays
 //********************
