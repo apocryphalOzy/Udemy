@@ -159,9 +159,9 @@
 // //Function Declarations vs. Expressions
 // //********************
 // //function declaration
-function percentageOfWorld1(population) {
-  return (population / 7900) * 100;
-}
+// function percentageOfWorld1(population) {
+//   return (population / 7900) * 100;
+// }
 // console.log(
 //   `Your country represents ${percentageOfWorld1(
 //     1441
@@ -190,18 +190,40 @@ function percentageOfWorld1(population) {
 //********************
 //Functions Calling Other Functions
 //********************
-function describePopulation(country, population) {
-  return `Your ${country} represents ${percentageOfWorld1(
-    population
-  )} percent of the world population.`;
-}
+// function percentageOfWorld1(population) {
+//   return (population / 7900) * 100;
+// }
 
-console.log(describePopulation("China", 1234));
-console.log(describePopulation("America", 12));
-console.log(describePopulation("Europe", 525234));
+// function describePopulation(country, population) {
+//   return `Your ${country} represents ${percentageOfWorld1(
+//     population
+//   )} percent of the world population.`;
+// }
+
+// console.log(describePopulation("China", 1234));
+// console.log(describePopulation("America", 12));
+// console.log(describePopulation("Europe", 525234));
 //********************
 //Introduction to Arrays
 //********************
+let population = [1243, 12, 123, 1564];
+if (population.length >= 4) {
+  console.log("True, has four elements");
+} else {
+  console.log("false, does not have more than 4 elements");
+}
+
+function percentageOfWorld1(population) {
+  return (population / 7900) * 100;
+}
+
+let percentages = [
+  percentageOfWorld1(population[0]),
+  percentageOfWorld1(population[1]),
+  percentageOfWorld1(population[2]),
+  percentageOfWorld1(population[3]),
+];
+console.log(percentages);
 //********************
 //Basic Array Operations (Methods)
 //********************
