@@ -90,6 +90,29 @@
 //**************
 // Coding Challenge #5
 //**************
+//create an arrow function to calculate the average of two teams
+let calcAverage = (Score1, Score2, Score3) => {
+  return (Score1 + Score2 + Score3) / 3;
+};
+
+let avgDolphins = calcAverage(44, 23, 71);
+let avgKoalas = calcAverage(65, 54, 49);
+let avgDolphins1 = calcAverage(85, 54, 41);
+let avgKoalas1 = calcAverage(23, 34, 27);
+
+function checkWinner(avgDolphins, avgKoalas) {
+  if (avgDolphins >= 2 * avgKoalas) {
+    return `Dolphins win (${avgDolphins} vs. ${avgKoalas})`;
+  } else if (avgKoalas >= 2 * avgDolphins) {
+    return `Koalas win (${avgKoalas} vs. ${avgDolphins})`;
+  } else {
+    return `No team wins!!!`;
+  }
+}
+
+console.log(checkWinner(avgDolphins, avgKoalas));
+console.log(checkWinner(avgDolphins1, avgKoalas1));
+
 //**************
 // Coding Challenge #6
 //**************
