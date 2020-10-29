@@ -265,31 +265,34 @@
 //********************
 //Object Methods
 //********************
-const myCountry = {
-  country: "USA",
-  capital: "no capital",
-  language: "English",
-  population: 350000000,
-  neighbors: ["Canada", "Mexico", "Greenland"],
-  describe: function () {
-    return `My country is the ${this.country} and it has ${this.capital}. Most of us speak ${this.language} and have a population of ${this.population} million. We have ${this.neighbors.length} neighboring countries, which are ${this.neighbors[0]}, ${this.neighbors[1]}, and ${this.neighbors[2]}`;
-  },
-  checkIsland: function () {
-    if (this.neighbors.length > 0) {
-      this.isIsland = false;
-      return `${this.country} has neighboring countries`;
-    } else {
-      this.isIsland = true;
-      return `${this.country} does not have any neighboring countries as is an Island`;
-    }
-  },
-};
-console.log(myCountry.describe());
-console.log(myCountry.checkIsland());
-console.log(myCountry);
+// const myCountry = {
+//   country: "USA",
+//   capital: "no capital",
+//   language: "English",
+//   population: 350000000,
+//   neighbors: ["Canada", "Mexico", "Greenland"],
+//   describe: function () {
+//     return `My country is the ${this.country} and it has ${this.capital}. Most of us speak ${this.language} and have a population of ${this.population} million. We have ${this.neighbors.length} neighboring countries, which are ${this.neighbors[0]}, ${this.neighbors[1]}, and ${this.neighbors[2]}`;
+//   },
+//   checkIsland: function () {
+//     if (this.neighbors.length > 0) {
+//       this.isIsland = false;
+//       return `${this.country} has neighboring countries`;
+//     } else {
+//       this.isIsland = true;
+//       return `${this.country} does not have any neighboring countries as is an Island`;
+//     }
+//   },
+// };
+// console.log(myCountry.describe());
+// console.log(myCountry.checkIsland());
+// console.log(myCountry);
 //********************
 //Iteration: The for Loop
 //********************
+for (vote = 1; vote <= 50; vote++) {
+  console.log(`Voter number ${vote} is currently voting`);
+}
 //********************
 //Looping Arrays, Breaking and Continuing
 //********************
