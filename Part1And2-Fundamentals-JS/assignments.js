@@ -227,27 +227,34 @@
 //********************
 //Basic Array Operations (Methods)
 //********************
-let neighbors = ["Greenland", "Canada", "Mexico"];
-//add to end of array
-neighbors.push("Utopia");
-console.log(neighbors);
-//remove at the end of array
-neighbors.pop("Utopia");
-console.log(neighbors);
+// let neighbors = ["Greenland", "Canada", "Mexico"];
+// //add to end of array
+// neighbors.push("Utopia");
+// console.log(neighbors);
+// //remove at the end of array
+// neighbors.pop("Utopia");
+// console.log(neighbors);
 
-if (neighbors.includes("Germany")) {
-  console.log("This is a central european country");
-} else {
-  console.log("Probably not a central european country");
-}
-//change array value of selected index
-let indexOf = neighbors.indexOf("Canada");
-neighbors[indexOf] = "Republic of Canada";
-console.log(neighbors);
+// if (neighbors.includes("Germany")) {
+//   console.log("This is a central european country");
+// } else {
+//   console.log("Probably not a central european country");
+// }
+// //change array value of selected index
+// let indexOf = neighbors.indexOf("Canada");
+// neighbors[indexOf] = "Republic of Canada";
+// console.log(neighbors);
 
 //********************
 //Introduction to Objects
 //********************
+const myCountry = {
+  country: "USA",
+  capital: "Dont have one",
+  language: "English",
+  population: 350000000,
+  neighbors: ["Canada", "Mexico", "Greenland"],
+};
 //********************
 //Dot vs. Bracket Notation
 //********************
