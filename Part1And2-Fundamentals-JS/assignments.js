@@ -250,7 +250,7 @@
 //********************
 const myCountry = {
   country: "USA",
-  capital: "Dont have one",
+  capital: "no capital",
   language: "English",
   population: 350000000,
   neighbors: ["Canada", "Mexico", "Greenland"],
@@ -258,6 +258,10 @@ const myCountry = {
 //********************
 //Dot vs. Bracket Notation
 //********************
+//use the myCountry object
+console.log(
+  `${myCountry.country} has ${myCountry.population} million ${myCountry.language}-speaking people and ${myCountry.neighbors.length} neighboring countries and ${myCountry.capital}`
+);
 //********************
 //Object Methods
 //********************
