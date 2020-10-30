@@ -290,15 +290,38 @@
 //********************
 //Iteration: The for Loop
 //********************
-for (vote = 1; vote <= 50; vote++) {
-  console.log(`Voter number ${vote} is currently voting`);
-}
+// for (vote = 1; vote <= 50; vote++) {
+//   console.log(`Voter number ${vote} is currently voting`);
+// }
 //********************
 //Looping Arrays, Breaking and Continuing
 //********************
+function percentageOfWorld1(population) {
+  return (population / 7900) * 100;
+}
+let populations = [234, 1324, 223, 555];
+let percentages2 = [];
+for (let i = 0; i < populations.length; i++) {
+  const percentOfPopulation = percentageOfWorld1(populations[i]);
+  percentages2.push(percentOfPopulation);
+}
+
+console.log(percentages2);
 //********************
 //Looping Backwards and Loops in Loops
 //********************
+let listOfNeighbors = [
+  ["Canada", "Mexico"],
+  ["Spain"],
+  ["Norway", "Sweden", "Russia"],
+];
+
+for (let i = 0; i < listOfNeighbors.length; i++) {
+  for (let y = 0; y < listOfNeighbors[i].length; y++) {
+    console.log(`Neighbor: ${listOfNeighbors[i][y]}`);
+  }
+}
+
 //********************
 //The while Loop
 //********************
