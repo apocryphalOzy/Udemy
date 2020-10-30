@@ -54,13 +54,9 @@ let totals = [];
 for (let i = 0; i < bills.length; i++) {
   const tipsEachBill = calcTip(bills[i]);
   tips.push(tipsEachBill);
+  totals.push(tipsEachBill + bills[i]);
 }
 console.log(tips);
-
-for (let i = 0; i < bills.length; i++) {
-  const totalsEachBill = tips[i] + bills[i];
-  totals.push(totalsEachBill);
-}
 console.log(totals);
 
 function calcAverage(arr) {
