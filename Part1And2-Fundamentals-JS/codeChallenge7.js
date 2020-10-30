@@ -35,3 +35,41 @@
 // } else {
 //   console.log(`John and Mark have the same BMI`);
 // }
+
+//**************
+// Coding Challenge #8
+//**************
+
+function calcTip(billValue) {
+  if (billValue >= 50 && billValue <= 300) {
+    return billValue * 0.15;
+  } else {
+    return billValue * 0.2;
+  }
+}
+let bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+let tips = [];
+let totals = [];
+
+for (let i = 0; i < bills.length; i++) {
+  const tipsEachBill = calcTip(bills[i]);
+  tips.push(tipsEachBill);
+}
+console.log(tips);
+
+for (let i = 0; i < bills.length; i++) {
+  const totalsEachBill = tips[i] + bills[i];
+  totals.push(totalsEachBill);
+}
+console.log(totals);
+
+function calcAverage(arr) {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
+  let avg = sum / arr.length;
+  return avg;
+}
+
+console.log(`The average for the total bills is ${calcAverage(totals)}`);
