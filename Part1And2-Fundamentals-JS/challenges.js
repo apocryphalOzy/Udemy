@@ -116,28 +116,21 @@
 //**************
 // Coding Challenge #6
 //**************
-let bills = [125, 555, 44];
+// let bills = [125, 555, 44];
 
-function calcTip(billValue) {
-  if (billValue >= 50 && billValue <= 300) {
-    return billValue * 0.15;
-  } else {
-    return billValue * 0.2;
-  }
-}
-let tip = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];
-console.log(tip);
-let total = [
-  bills[0] + calcTip(bills[0]),
-  bills[1] + calcTip(bills[1]),
-  bills[2] + calcTip(bills[2]),
-];
+// function calcTip(billValue) {
+//   if (billValue >= 50 && billValue <= 300) {
+//     return billValue * 0.15;
+//   } else {
+//     return billValue * 0.2;
+//   }
+// }
+// let tip = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];
+// console.log(tip);
+// let total = [
+//   bills[0] + calcTip(bills[0]),
+//   bills[1] + calcTip(bills[1]),
+//   bills[2] + calcTip(bills[2]),
+// ];
 
-console.log(total);
-
-//**************
-// Coding Challenge #7
-//**************
-//**************
-// Coding Challenge #8
-//**************
+// console.log(total);

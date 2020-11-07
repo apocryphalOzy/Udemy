@@ -227,42 +227,114 @@
 //********************
 //Basic Array Operations (Methods)
 //********************
-let neighbors = ["Greenland", "Canada", "Mexico"];
-//add to end of array
-neighbors.push("Utopia");
-console.log(neighbors);
-//remove at the end of array
-neighbors.pop("Utopia");
-console.log(neighbors);
+// let neighbors = ["Greenland", "Canada", "Mexico"];
+// //add to end of array
+// neighbors.push("Utopia");
+// console.log(neighbors);
+// //remove at the end of array
+// neighbors.pop("Utopia");
+// console.log(neighbors);
 
-if (neighbors.includes("Germany")) {
-  console.log("This is a central european country");
-} else {
-  console.log("Probably not a central european country");
-}
-//change array value of selected index
-let indexOf = neighbors.indexOf("Canada");
-neighbors[indexOf] = "Republic of Canada";
-console.log(neighbors);
+// if (neighbors.includes("Germany")) {
+//   console.log("This is a central european country");
+// } else {
+//   console.log("Probably not a central european country");
+// }
+// //change array value of selected index
+// let indexOf = neighbors.indexOf("Canada");
+// neighbors[indexOf] = "Republic of Canada";
+// console.log(neighbors);
 
 //********************
 //Introduction to Objects
 //********************
+// const myCountry = {
+//   country: "USA",
+//   capital: "no capital",
+//   language: "English",
+//   population: 350000000,
+//   neighbors: ["Canada", "Mexico", "Greenland"],
+// };
 //********************
 //Dot vs. Bracket Notation
 //********************
+//use the myCountry object
+// console.log(
+//   `${myCountry.country} has ${myCountry.population} million ${myCountry.language}-speaking people and ${myCountry.neighbors.length} neighboring countries and ${myCountry.capital}`
+// );
 //********************
 //Object Methods
 //********************
+// const myCountry = {
+//   country: "USA",
+//   capital: "no capital",
+//   language: "English",
+//   population: 350000000,
+//   neighbors: ["Canada", "Mexico", "Greenland"],
+//   describe: function () {
+//     return `My country is the ${this.country} and it has ${this.capital}. Most of us speak ${this.language} and have a population of ${this.population} million. We have ${this.neighbors.length} neighboring countries, which are ${this.neighbors[0]}, ${this.neighbors[1]}, and ${this.neighbors[2]}`;
+//   },
+//   checkIsland: function () {
+//     if (this.neighbors.length > 0) {
+//       this.isIsland = false;
+//       return `${this.country} has neighboring countries`;
+//     } else {
+//       this.isIsland = true;
+//       return `${this.country} does not have any neighboring countries as is an Island`;
+//     }
+//   },
+// };
+// console.log(myCountry.describe());
+// console.log(myCountry.checkIsland());
+// console.log(myCountry);
 //********************
 //Iteration: The for Loop
 //********************
+// for (vote = 1; vote <= 50; vote++) {
+//   console.log(`Voter number ${vote} is currently voting`);
+// }
 //********************
 //Looping Arrays, Breaking and Continuing
 //********************
+// function percentageOfWorld1(population) {
+//   return (population / 7900) * 100;
+// }
+// let populations = [234, 1324, 223, 555];
+// let percentages2 = [];
+// for (let i = 0; i < populations.length; i++) {
+//   const percentOfPopulation = percentageOfWorld1(populations[i]);
+//   percentages2.push(percentOfPopulation);
+// }
+
+// console.log(percentages2);
 //********************
 //Looping Backwards and Loops in Loops
 //********************
+// let listOfNeighbors = [
+//   ["Canada", "Mexico"],
+//   ["Spain"],
+//   ["Norway", "Sweden", "Russia"],
+// ];
+
+// for (let i = 0; i < listOfNeighbors.length; i++) {
+//   for (let y = 0; y < listOfNeighbors[i].length; y++) {
+//     console.log(`Neighbor: ${listOfNeighbors[i][y]}`);
+//   }
+// }
+
 //********************
 //The while Loop
 //********************
+function percentageOfWorld1(population) {
+  return (population / 7900) * 100;
+}
+let populations1 = [234, 1324, 223, 555];
+let percentages3 = [];
+let i = 0;
+while (i < populations.length) {
+  const percentOfPopulation = percentageOfWorld1(populations1[i]);
+  percentages3.push(percentOfPopulation);
+  i++;
+}
+
+console.log(percentages3);
