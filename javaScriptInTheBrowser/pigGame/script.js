@@ -18,7 +18,7 @@ score1El.textContent = 0;
 diceEl.classList.add("hidden");
 
 //hold final scores
-const scores = [0, 0];
+let scores = [0, 0];
 //hold current score
 let currentScore = 0;
 //define whose turn
@@ -65,7 +65,7 @@ btnHold.addEventListener("click", function () {
       scores[activePlayer];
 
     //2. Check if players score is >= 100
-    if (scores[activePlayer] >= 100) {
+    if (scores[activePlayer] >= 10) {
       //Finish the game
       //hide the dice
       diceEl.classList.add("hidden");
@@ -84,4 +84,27 @@ btnHold.addEventListener("click", function () {
       switchPlayer();
     }
   }
+});
+
+btnNew.addEventListener("click", function () {
+  //1. reset all the scores
+  score0El.textContent = 0;
+  score1El.textContent = 0;
+  document.getElementById(`current--0`).textContent = 0;
+  document.getElementById(`current--1`).textContent = 0;
+  //remove winner background color
+  document
+    .querySelector(`.player--${activePlayer}`)
+    .classList.remove("player--winner");
+  //reset active player color
+  activePlayer = 0;
+  player0El.classList.toggle("player--active");
+  //hold final scores
+  scores = [0, 0];
+  //hold current score
+  currentScore = 0;
+  //define whose turn
+  activePlayer = 0;
+  //state of game
+  playing = true;
 });
