@@ -12,19 +12,39 @@ const btnNew = document.querySelector(".btn--new");
 const btnRoll = document.querySelector(".btn--roll");
 const btnHold = document.querySelector(".btn--hold");
 
-//starting conditions/initial values
-score0El.textContent = 0;
-score1El.textContent = 0;
-diceEl.classList.add("hidden");
+//declare variables for global scope
+let scores, currentScore, activePlayer, playing;
 
-//hold final scores
-let scores = [0, 0];
-//hold current score
-let currentScore = 0;
-//define whose turn
-let activePlayer = 0;
-//state of game
-let playing = true;
+const init = function () {
+  //starting conditions/initial values
+  score0El.textContent = 0;
+  score1El.textContent = 0;
+  diceEl.classList.add("hidden");
+
+  //hold final scores
+  scores = [0, 0];
+  //hold current score
+  currentScore = 0;
+  //define whose turn
+  activePlayer = 0;
+  //state of game
+  playing = true;
+
+  //1. reset all the scores
+  score0El.textContent = 0;
+  score1El.textContent = 0;
+  current0El.textContent = 0;
+  current1El.textContent = 0;
+  //remove winning players background color
+  player0El.classList.remove("player--winner");
+  player1El.classList.remove("player--winner");
+  //add player 1 background color back on new game
+  player0El.classList.add("player--active");
+  player1El.classList.remove("player--active");
+};
+
+//run init function
+init();
 
 const switchPlayer = function () {
   document.getElementById(`current--${activePlayer}`).textContent = 0;
@@ -86,25 +106,4 @@ btnHold.addEventListener("click", function () {
   }
 });
 
-btnNew.addEventListener("click", function () {
-  //1. reset all the scores
-  score0El.textContent = 0;
-  score1El.textContent = 0;
-  document.getElementById(`current--0`).textContent = 0;
-  document.getElementById(`current--1`).textContent = 0;
-  //remove winner background color
-  document
-    .querySelector(`.player--${activePlayer}`)
-    .classList.remove("player--winner");
-  //reset active player color
-  activePlayer = 0;
-  player0El.classList.toggle("player--active");
-  //hold final scores
-  scores = [0, 0];
-  //hold current score
-  currentScore = 0;
-  //define whose turn
-  activePlayer = 0;
-  //state of game
-  playing = true;
-});
+btnNew.addEventListener("click", init);
