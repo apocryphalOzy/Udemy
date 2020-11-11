@@ -35,7 +35,7 @@ _Popular Paradigms_
 
 : The prototype contains all the array methods and the arrays that we create in our code. We then inherit the methods from the blueprint so that we can use them on our arrays.
 
-![oversimplified array prototype](images/oversimplifiedPrototype.jpg)
+![oversimplified array prototype](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/oversimplifiedPrototype.JPG)
 
 ### First-class functions
 
