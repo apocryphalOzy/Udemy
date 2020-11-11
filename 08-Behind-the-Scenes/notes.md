@@ -78,7 +78,7 @@ _Popular Paradigms_
     - the call stack is where our code is actually executed using something called execution context
     - the heap is an unstructured memory pool which stores all the objects that our application needs.
 
-![JS engine - empty call stack and heap]()
+![JS engine - empty call stack and heap](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/JSEngineCallstackAndHeap.JPG)
 
 ### Compilation Vs. Interpretation
 
@@ -88,7 +88,7 @@ _Popular Paradigms_
 
 : JS now uses something called **just-in-time (JIT) compilation**. The entire code in JIT is converted into machine code at once, then executed immediately
 
-![Compilation Vs. Interpretation]()
+![Compilation Vs. Interpretation](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/compilationVSinterpretation.JPG)
 
 ### Just-in-time compilation of JS
 
@@ -100,7 +100,7 @@ _Popular Paradigms_
 
 : this is what makes modern browser engines so fast. All this parsing, compilation adn optimization happens in some special threads inside the engine that we cannot access from our code. So separate from the main thread that is basically running into a call stack executing our own code. Different engines implement in slightly different ways, but this si what most JIT compilation looks like for JS.
 
-![JIT Compilation]()
+![JIT Compilation](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/JITcompilation.JPG)
 
 ### JavaScript Runtime
 
@@ -113,10 +113,10 @@ _Popular Paradigms_
     - For example we attach event handler functions to DOM elements like a button to react to certain events. These event handler functions are also called callback functions.
     - as the event happens (e.g: click event) the callback function will be called. The callback functions is put into the callback queue. When the stack is empty the callback function is passed to the stack so that it can be executed. This happens by something called the event loop. The event loop takes the callback functions from the callback queue and puts them in the call stack so that they can be executed.
 
-![JS runtime]()
+![JS runtime](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/JSruntime.JPG)
 
 : This is what the JS runtime environment looks like outside of the browser.
 
 : It's pretty similar, but since we don't have a browser, we can't have web APIs because it's the browser who provides these. Instead we have multiple C++ bindings and a so called thread pool.
 
-![JS runtime in node.js]()
+![JS runtime in node.js](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/JSruntimeINnodeJS.JPG)
