@@ -41,7 +41,7 @@ _Popular Paradigms_
 
 : JavaScript is a language with first-class functions. This means that the functions are simply **treated as variables.** We can pass them into other functions and return them from functions.
 
-![First Class function examples]()
+![First Class function examples](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/firstClassFunctionExample.JPG)
 
 ### Dynamic
 
@@ -49,7 +49,7 @@ _Popular Paradigms_
 
 : C, Java and Ruby are all languages you must declare data types to variables. TypeScript is JS with types.
 
-![dynamically typed language]()
+![dynamically typed language](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/dynamiclanguage.JPG)
 
 ### Non-Blocking event loop concurrency model
 
@@ -63,4 +63,4 @@ _Popular Paradigms_
 
 : A thread is like a set of instructions that is executed in the computers CPU. So, the thread is where our code is actually executed in a machine's processor.
 
-![Single Threaded Non Blocking Event Loop Concurrency Model]()
+![Single Threaded Non Blocking Event Loop Concurrency Model](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/singleThreadedNonBlockingEventLoopConcurrencyModel.JPG)
