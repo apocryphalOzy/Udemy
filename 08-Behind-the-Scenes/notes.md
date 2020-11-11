@@ -32,7 +32,8 @@ _Popular Paradigms_
 : Everything in JavaScript is an object except for primitive values such as numbers, strings, bigint, booleans, undefined and symbols.
 : Arrays are an object and we can use the push method/property on an array. These arrays come from an array blueprint. A template that is called a prototype. This is also called prototypal inheritance.
 : The prototype contains all the array methods and the arrays that we create in our code. We then inherit the methods from the blueprint so that we can use them on our arrays.
-![oversimplified array prototype](https://imgbox.com/gdmGlOaX)
+
+![oversimplified array prototype](images/oversimplifiedPrototype)
 
 ### First-class functions
 
