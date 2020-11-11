@@ -40,3 +40,27 @@ _Popular Paradigms_
 ### First-class functions
 
 : JavaScript is a language with first-class functions. This means that the functions are simply **treated as variables.** We can pass them into other functions and return them from functions.
+
+![First Class function examples]()
+
+### Dynamic
+
+: JavaScript is a dynamic language which actually means dynamically-typed. For example, we dont assign data types to variables. Variable data types dont become known until the JS engine executes our code. The type of variables can be easily changed as we reassign them.
+
+: C, Java and Ruby are all languages you must declare data types to variables. TypeScript is JS with types.
+
+![dynamically typed language]()
+
+### Non-Blocking event loop concurrency model
+
+: A concurrency model is how the JS engine handles multiple tasks happening at the same time.
+
+: Event loop takes long running tasks and executes them in the "background" and puts them back in the main thread once they are finished.
+
+### Single-Threaded
+
+: The reason we need a concurrency model is because JS runs in one **single thread**, so it can only do one thing at a time.
+
+: A thread is like a set of instructions that is executed in the computers CPU. So, the thread is where our code is actually executed in a machine's processor.
+
+![Single Threaded Non Blocking Event Loop Concurrency Model]()
