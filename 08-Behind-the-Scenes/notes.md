@@ -138,3 +138,55 @@ _Popular Paradigms_
 : The variable environment, scope chain and this keyword are all generated in the creation phase, right before execution. Execution contexts belonging to arrow functions do not get their own arguments and this keyword.
 
 ![Execution Context in Detail](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/ExecutionContextINDetail.JPG)
+
+---
+
+### Scope Concepts
+
+: **Scoping** - How our programs variables are organized and accessed. "Where do variables live?" ior "Where can we access a certain variable, and where note?"
+
+: **Lexical** Scoping - Scoping is controlled by placement of functions and blocks in the code
+
+: **Scope** - Space or environment in which a certain variable is **declared** (variable environment in case of functions). There is a **global** scope, **function** scope, and **block** scope
+
+: **Scope of Variable** - region of our code where a certain variable can be **accessed**
+
+### 3 Types of Scope
+
+![3 types of scope]()
+
+### Scope Chain
+
+: if one scope needs to use a certain variable but cannot find it in the current scope, it will lok up in the scope chain and see if it can find a variable in one of the parent scopes. It it can, it will then use that variable. If it can't then there will be an error. This process is called variable lookup. This will never work the other way around. A parent scope will never have access to variables in a child scope.
+
+![scope chain]()
+
+: variables declared with **var** do not use block scopes. They are function scoped. **let** and **const** are block scoped
+
+: in the rules of **lexical scoping** sibling scopes do not have access to each others variables simply because one is not written inside the other one. The scope chain only works upwards and not sideways
+
+![block and lexical scoping]()
+
+## scope chain vs. call stack
+
+**Global Variable Environment (VE)**
+
+![globalVariableEnvironment]()
+
+**First VE and global VE**
+
+![firstVE]()
+
+**Second EV**
+
+: we can say that the scope chain in a certain scope is equal to adding together all the variable environments of all the parent scopes.
+
+![secondVE]()
+
+**Third VE**
+
+![thirdVE]()
+
+**Why we get a reference error in the third function of the execution stack. c and b cant be found**
+
+![referenceError]()
