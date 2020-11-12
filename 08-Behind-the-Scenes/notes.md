@@ -120,3 +120,73 @@ _Popular Paradigms_
 : It's pretty similar, but since we don't have a browser, we can't have web APIs because it's the browser who provides these. Instead we have multiple C++ bindings and a so called thread pool.
 
 ![JS runtime in node.js](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/JSruntimeINnodeJS.JPG)
+
+---
+
+### What is an Execution Context?
+
+: a global execution context is created after our code has been compiled. Top level code is code that is not inside any function. JavaScript always runs inside an execution context. No matter how large a JS project is, there is only ever one global execution context. Its always there as the default context and is where our top-level code will execute. Once the top level code is finished executing, functions start to execute. For each and every function call, a new execution context will be created containing all the information that is necessary to run exactly that function. Same thing goes for methods since these are functions attached to objects
+
+: Execution context is an environment in which a piece of JS is executed. It stores all the necessary information for some code to be executed.
+
+![Execution Context](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/executionContext.JPG)
+
+### Execution Context in Detail
+
+: The first thing inside any execution context is a variable environment. IN this environment all of our variables and function declarations are stored and there is also a special arguments object. This special object contains all the arguments that were passed into the function that the current execution context belong to.
+
+: The variable environment, scope chain and this keyword are all generated in the creation phase, right before execution. Execution contexts belonging to arrow functions do not get their own arguments and this keyword.
+
+![Execution Context in Detail](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/ExecutionContextINDetail.JPG)
+
+---
+
+### Scope Concepts
+
+: **Scoping** - How our programs variables are organized and accessed. "Where do variables live?" ior "Where can we access a certain variable, and where note?"
+
+: **Lexical** Scoping - Scoping is controlled by placement of functions and blocks in the code
+
+: **Scope** - Space or environment in which a certain variable is **declared** (variable environment in case of functions). There is a **global** scope, **function** scope, and **block** scope
+
+: **Scope of Variable** - region of our code where a certain variable can be **accessed**
+
+### 3 Types of Scope
+
+![3 types of scope](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/3TypesofScope.JPG)
+
+### Scope Chain
+
+: if one scope needs to use a certain variable but cannot find it in the current scope, it will lok up in the scope chain and see if it can find a variable in one of the parent scopes. It it can, it will then use that variable. If it can't then there will be an error. This process is called variable lookup. This will never work the other way around. A parent scope will never have access to variables in a child scope.
+
+![scope chain](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/scopeChain.JPG)
+
+: variables declared with **var** do not use block scopes. They are function scoped. **let** and **const** are block scoped
+
+: in the rules of **lexical scoping** sibling scopes do not have access to each others variables simply because one is not written inside the other one. The scope chain only works upwards and not sideways
+
+![block and lexical scoping](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/blockAndLexicalScoping.JPG)
+
+## scope chain vs. call stack
+
+**Global Variable Environment (VE)**
+
+![globalVariableEnvironment](https://github.com/dulcetdiver/Udemy/blob/staging_branch/08-Behind-the-Scenes/images/globalVariableEnvironment.JPG)
+
+**First VE and global VE**
+
+![firstVE](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/firstVE.JPG)
+
+**Second EV**
+
+: we can say that the scope chain in a certain scope is equal to adding together all the variable environments of all the parent scopes.
+
+![secondVE](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/secondVE.JPG)
+
+**Third VE**
+
+![thirdVE](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/thirdVE.JPG)
+
+**Why we get a reference error in the third function of the execution stack. c and b cant be found**
+
+![referenceError](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/referenceError.JPG)
