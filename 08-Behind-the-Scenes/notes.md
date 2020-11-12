@@ -153,40 +153,40 @@ _Popular Paradigms_
 
 ### 3 Types of Scope
 
-![3 types of scope]()
+![3 types of scope](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/3TypesofScope.JPG)
 
 ### Scope Chain
 
 : if one scope needs to use a certain variable but cannot find it in the current scope, it will lok up in the scope chain and see if it can find a variable in one of the parent scopes. It it can, it will then use that variable. If it can't then there will be an error. This process is called variable lookup. This will never work the other way around. A parent scope will never have access to variables in a child scope.
 
-![scope chain]()
+![scope chain](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/scopeChain.JPG)
 
 : variables declared with **var** do not use block scopes. They are function scoped. **let** and **const** are block scoped
 
 : in the rules of **lexical scoping** sibling scopes do not have access to each others variables simply because one is not written inside the other one. The scope chain only works upwards and not sideways
 
-![block and lexical scoping]()
+![block and lexical scoping](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/blockAndLexicalScoping.JPG)
 
 ## scope chain vs. call stack
 
 **Global Variable Environment (VE)**
 
-![globalVariableEnvironment]()
+![globalVariableEnvironment](https://github.com/dulcetdiver/Udemy/blob/staging_branch/08-Behind-the-Scenes/images/globalVariableEnvironment.JPG)
 
 **First VE and global VE**
 
-![firstVE]()
+![firstVE](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/firstVE.JPG)
 
 **Second EV**
 
 : we can say that the scope chain in a certain scope is equal to adding together all the variable environments of all the parent scopes.
 
-![secondVE]()
+![secondVE](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/secondVE.JPG)
 
 **Third VE**
 
-![thirdVE]()
+![thirdVE](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/thirdVE.JPG)
 
 **Why we get a reference error in the third function of the execution stack. c and b cant be found**
 
-![referenceError]()
+![referenceError](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/referenceError.JPG)
