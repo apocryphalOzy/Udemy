@@ -129,7 +129,7 @@ _Popular Paradigms_
 
 : Execution context is an environment in which a piece of JS is executed. It stores all the necessary information for some code to be executed.
 
-![Execution Context]()
+![Execution Context](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/executionContext.JPG)
 
 ### Execution Context in Detail
 
@@ -137,4 +137,4 @@ _Popular Paradigms_
 
 : The variable environment, scope chain and this keyword are all generated in the creation phase, right before execution. Execution contexts belonging to arrow functions do not get their own arguments and this keyword.
 
-![Execution Context in Detail]()
+![Execution Context in Detail](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/ExecutionContextINDetail.JPG)
