@@ -120,3 +120,21 @@ _Popular Paradigms_
 : It's pretty similar, but since we don't have a browser, we can't have web APIs because it's the browser who provides these. Instead we have multiple C++ bindings and a so called thread pool.
 
 ![JS runtime in node.js](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/JSruntimeINnodeJS.JPG)
+
+---
+
+### What is an Execution Context?
+
+: a global execution context is created after our code has been compiled. Top level code is code that is not inside any function. JavaScript always runs inside an execution context. No matter how large a JS project is, there is only ever one global execution context. Its always there as the default context and is where our top-level code will execute. Once the top level code is finished executing, functions start to execute. For each and every function call, a new execution context will be created containing all the information that is necessary to run exactly that function. Same thing goes for methods since these are functions attached to objects
+
+: Execution context is an environment in which a piece of JS is executed. It stores all the necessary information for some code to be executed.
+
+![Execution Context]()
+
+### Execution Context in Detail
+
+: The first thing inside any execution context is a variable environment. IN this environment all of our variables and function declarations are stored and there is also a special arguments object. This special object contains all the arguments that were passed into the function that the current execution context belong to.
+
+: The variable environment, scope chain and this keyword are all generated in the creation phase, right before execution. Execution contexts belonging to arrow functions do not get their own arguments and this keyword.
+
+![Execution Context in Detail]()
