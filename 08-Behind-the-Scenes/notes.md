@@ -225,4 +225,6 @@ _Popular Paradigms_
 
 : Whenever you think you're copying an object, you're really just creating a new variable that points to the exact same object.
 
+: An object is a reference value that is stored in the JS Engine Heap. The call stack then just keeps a reference to the memory position at which the object is stored in the heap.
+
 ![PrimitiveVSReferenceValues](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/PrimitiveVSReferenceValues.JPG)
