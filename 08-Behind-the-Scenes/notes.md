@@ -197,11 +197,11 @@ _Popular Paradigms_
 
 : Makes some types of variables accessible/usable in the code before they are actually declared. "Variables lifted to the top of their scope"
 
-![HoistinginJavaScript]()
+![HoistinginJavaScript](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/HoistinginJavaScript.JPG)
 
 ### Temporal Dead Zone, Let and Const
 
-![TDZletANDConst]()
+![TDZletANDConst](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/TDZletANDConst.JPG)
 
 ---
 
@@ -211,7 +211,7 @@ _Popular Paradigms_
 
 : the arrow function doesnt get its own this keyword. Instead the arrow function simply uses the lexical this keyword, which means that it uses the this keyword of its parent function or of its parents scope. The lexical keyword in the arrow functions case is the window object.
 
-![HowtheTHISkeywordWorks]()
+![HowtheTHISkeywordWorks](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/HowtheTHISkeywordWorks.JPG)
 
 ---
 
@@ -219,10 +219,10 @@ _Popular Paradigms_
 
 : Objects (Reference Types) are stored in the Heap. Primitive Types are stored in the Call Stack.
 
-![PrimitivesObjectsJSEngine]()
+![PrimitivesObjectsJSEngine](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/PrimitivesObjectsJSEngine.JPG)
 
 ### Primitive Vs. Reference Values
 
 : Whenever you think you're copying an object, you're really just creating a new variable that points to the exact same object.
 
-![PrimitiveVSReferenceValues]()
+![PrimitiveVSReferenceValues](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/PrimitiveVSReferenceValues.JPG)
