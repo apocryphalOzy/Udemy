@@ -123,7 +123,7 @@ _Popular Paradigms_
 
 ---
 
-### What is an Execution Context?
+### Whatfdsasjfsf sjh is an Execution Context?
 
 : a global execution context is created after our code has been compiled. Top level code is code that is not inside any function. JavaScript always runs inside an execution context. No matter how large a JS project is, there is only ever one global execution context. Its always there as the default context and is where our top-level code will execute. Once the top level code is finished executing, functions start to execute. For each and every function call, a new execution context will be created containing all the information that is necessary to run exactly that function. Same thing goes for methods since these are functions attached to objects
 
@@ -190,3 +190,41 @@ _Popular Paradigms_
 **Why we get a reference error in the third function of the execution stack. c and b cant be found**
 
 ![referenceError](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/referenceError.JPG)
+
+---
+
+### Hoisting
+
+: Makes some types of variables accessible/usable in the code before they are actually declared. "Variables lifted to the top of their scope"
+
+![HoistinginJavaScript](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/HoistinginJavaScript.JPG)
+
+### Temporal Dead Zone, Let and Const
+
+![TDZletANDConst](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/TDZletANDConst.JPG)
+
+---
+
+### How the THIS keyword works
+
+: The this keyword/variable is a special variable that is created for every execution context (every function). Takes the value of (points to) the "owner" of the function in which the **this** keyword is used.
+
+: the arrow function doesnt get its own this keyword. Instead the arrow function simply uses the lexical this keyword, which means that it uses the this keyword of its parent function or of its parents scope. The lexical keyword in the arrow functions case is the window object.
+
+![HowtheTHISkeywordWorks](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/HowtheTHISkeywordWorks.JPG)
+
+---
+
+### Primitives, Objects and The JavaScript Engine
+
+: Objects (Reference Types) are stored in the Heap. Primitive Types are stored in the Call Stack.
+
+![PrimitivesObjectsJSEngine](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/PrimitivesObjectsJSEngine.JPG)
+
+### Primitive Vs. Reference Values
+
+: Whenever you think you're copying an object, you're really just creating a new variable that points to the exact same object.
+
+: An object is a reference value that is stored in the JS Engine Heap. The call stack then just keeps a reference to the memory position at which the object is stored in the heap.
+
+![PrimitiveVSReferenceValues](https://raw.githubusercontent.com/dulcetdiver/Udemy/staging_branch/08-Behind-the-Scenes/images/PrimitiveVSReferenceValues.JPG)
