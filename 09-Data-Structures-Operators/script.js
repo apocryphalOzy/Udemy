@@ -45,6 +45,43 @@ const restaurant = {
   },
 };
 
+//Short Circuiting (&& and ||)
+//Logical operators can use ANY data type, return ANY data type, and short-circuiting.
+//Short Circuiting is where if the first operand is truthy in an OR operator then the other operand will not even be evaluated.
+console.log("---OR---");
+console.log(3 || "jonas"); //3
+console.log("" || "Jonas"); //Jonas
+console.log(true || 0); //true
+console.log(undefined || null); //null
+
+console.log(undefined || 0 || "" || "Hello" || 23 || null);
+
+//restaurant.numGuests = 23;
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1);
+
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2);
+
+console.log("---AND---");
+//the AND operator short circuits when the first value is falsy and returns the falsy value
+//the AND operator does the complete opposite of the OR operator
+console.log(0 && "Jonas");
+//When it is a truthy value, it evaluates until the last value and returns the last value
+//the AND operator is only TRUE if all the operands are TRUE
+console.log(7 && "Jonas");
+
+console.log("Hello" && 23 && null && "jonas");
+
+//practical example
+if (restaurant.orderPizza) {
+  restaurant.orderPizza("mushrooms", "spinach");
+}
+
+restaurant.orderPizza && restaurant.orderPizza("mushrooms", "spinach");
+
+/*
+//Rest pattern and parameters
 //1. Destructuring
 
 // SPREAD, because on RIGHT side of =
@@ -82,7 +119,7 @@ add(...x);
 restaurant.orderPizza("mushrooms", "onion", "garlic");
 restaurant.orderPizza("mushrooms");
 
-/*
+
 ///////////////////////////////////////////////////////////////////////////////
 //practical application of destructuring
 restaurant.orderDelivery({
