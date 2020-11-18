@@ -24,7 +24,29 @@ const restaurant = {
   order: function (startIndex, mainIndex) {
     return [this.starterMenu[startIndex], this.mainMenu[mainIndex]];
   },
+  orderDelivery: function ({
+    starterIndex = 1,
+    mainIndex = 0,
+    time = "20:00",
+    address,
+  }) {
+    console.log(
+      `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
 };
+//practical application of destructuring
+restaurant.orderDelivery({
+  time: "22:30",
+  address: "Via Del Sole, 22",
+  mainIndex: 2,
+  starterIndex: 2,
+});
+
+restaurant.orderDelivery({
+  address: "Via Del Sole, 22",
+  starterIndex: 1,
+});
 
 let [main, , secondary] = restaurant.categories;
 console.log(main, secondary);
@@ -48,3 +70,32 @@ console.log(i, j, k);
 // Default values - can be useful if we get data from an API
 const [p = 1, q = 1, r = 1] = [8, 9];
 console.log(p, q, r);
+
+//destructuring objects
+const { name, openingHours, categories } = restaurant;
+console.log(name, openingHours, categories);
+
+//make variable names different than the property names
+const {
+  name: restaurantName,
+  openingHours: hours,
+  categories: tags,
+} = restaurant;
+console.log(restaurantName, hours, tags);
+
+//setting default values in objects
+const { menu = [], starterMenu: starters = [] } = restaurant; //helpful when we dont have our data hard-coded
+console.log(menu, starters);
+
+//mutating variables while destructuring objects
+let a = 111;
+let b = 999;
+const obj = { a: 23, b: 7, c: 14 };
+({ a, b } = obj); //we had to wrap the destructuring assignment in parenthesis
+console.log(a, b);
+
+//nested objects
+const {
+  fri: { open: o, close: c },
+} = openingHours;
+console.log(o, c);
