@@ -34,7 +34,103 @@ const restaurant = {
       `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
     );
   },
+
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(`Here is your delicious pasta with ${ing1}, ${ing2}, ${ing3} `);
+  },
+
+  orderPizza: function (mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient);
+    console.log(otherIngredients);
+  },
 };
+
+//The nullish coalescing Operator (??)
+
+restaurant.numGuests = 0;
+const guests = restaurant.numGuests || 10;
+console.log(guests); //10
+
+//Nullish values are null and undefined (NOT 0 or '')
+const guestCorrect = restaurant.numGuests ?? 10;
+console.log(guestCorrect); //0
+/*
+//Short Circuiting (&& and ||)
+//Logical operators can use ANY data type, return ANY data type, and short-circuiting.
+//Short Circuiting is where if the first operand is truthy in an OR operator then the other operand will not even be evaluated.
+console.log("---OR---");
+console.log(3 || "jonas"); //3
+console.log("" || "Jonas"); //Jonas
+console.log(true || 0); //true
+console.log(undefined || null); //null
+
+console.log(undefined || 0 || "" || "Hello" || 23 || null);
+
+//restaurant.numGuests = 23;
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1);
+
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2);
+
+console.log("---AND---");
+//the AND operator short circuits when the first value is falsy and returns the falsy value
+//the AND operator does the complete opposite of the OR operator
+console.log(0 && "Jonas");
+//When it is a truthy value, it evaluates until the last value and returns the last value
+//the AND operator is only TRUE if all the operands are TRUE
+console.log(7 && "Jonas");
+
+console.log("Hello" && 23 && null && "jonas");
+
+//practical example
+if (restaurant.orderPizza) {
+  restaurant.orderPizza("mushrooms", "spinach");
+}
+
+restaurant.orderPizza && restaurant.orderPizza("mushrooms", "spinach");
+
+
+//Rest pattern and parameters
+//1. Destructuring
+
+// SPREAD, because on RIGHT side of =
+const arr = [1, 2, ...[3, 4]];
+console.log(arr);
+
+// REST, because on LEFT side of =
+const [a, b, ...others] = [1, 2, 3, 4, 5];
+console.log(a, b, others);
+
+const [pizza, , risotto, ...otherFood] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
+console.log(pizza, risotto, otherFood);
+
+//objects
+const { sat, ...weekdays } = restaurant.openingHours;
+console.log(weekdays);
+
+//2. functions with REST
+//function that accepts any number of parameters
+const add = function (...numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+  console.log(sum);
+};
+add(2, 3);
+add(12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12);
+
+const x = [23, 5, 7];
+add(...x);
+
+//real world edge case
+restaurant.orderPizza("mushrooms", "onion", "garlic");
+restaurant.orderPizza("mushrooms");
+
+
+///////////////////////////////////////////////////////////////////////////////
 //practical application of destructuring
 restaurant.orderDelivery({
   time: "22:30",
@@ -99,3 +195,50 @@ const {
   fri: { open: o, close: c },
 } = openingHours;
 console.log(o, c);
+
+//The spread operator (...)
+const arr = [7, 8, 9];
+const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+console.log(badNewArr);
+
+const goodNewArr = [1, 2, ...arr];
+console.log(newArr);
+
+console.log(...goodNewArr);
+console.log(1, 2, 7, 8, 9);
+
+const newMenu = [...restaurant.mainMenu, "Gnocci"];
+console.log(newMenu);
+
+//copy array
+const mainMenuCopy = [...restaurant.mainMenu];
+
+//join 2 arrays
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+console.log(menu);
+
+// Iterables: arrays, strings, maps, sets. NOT objects
+const str = "Jonas";
+const letters = [...str, "", "S."];
+console.log(letters);
+console.log(...str);
+// console.log(`${...str} Schmedtmann`) //Error: unexpected token
+
+//REAL WORLD EXAMPLE
+const ingredients = [
+  prompt("Lets make pasta! What is ingredient 1?"),
+  prompt("Ingredient 2?"),
+  prompt("Ingredient 3?"),
+];
+
+restaurant.orderPasta(...ingredients);
+
+// Objects
+const newRestaurant = { foundedIn: 1998, ...restaurant, founder: "Guiseppe" };
+console.log(newRestaurant);
+
+const restaurantCopy = { ...restaurant };
+restaurantCopy.name = "Ristorante Roma";
+console.log(restaurantCopy.name);
+console.log(restaurant.name);
+*/
