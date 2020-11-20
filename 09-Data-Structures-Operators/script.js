@@ -1,4 +1,3 @@
-
 "use strict";
 
 const restaurant = {
@@ -91,7 +90,6 @@ if (restaurant.orderPizza) {
 
 restaurant.orderPizza && restaurant.orderPizza("mushrooms", "spinach");
 
-
 //Rest pattern and parameters
 //1. Destructuring
 
@@ -129,7 +127,6 @@ add(...x);
 //real world edge case
 restaurant.orderPizza("mushrooms", "onion", "garlic");
 restaurant.orderPizza("mushrooms");
-
 
 ///////////////////////////////////////////////////////////////////////////////
 //practical application of destructuring
@@ -242,4 +239,3 @@ const restaurantCopy = { ...restaurant };
 restaurantCopy.name = "Ristorante Roma";
 console.log(restaurantCopy.name);
 console.log(restaurant.name);
-*/
