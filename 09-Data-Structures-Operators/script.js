@@ -1,3 +1,4 @@
+
 "use strict";
 
 const restaurant = {
@@ -54,7 +55,7 @@ console.log(guests); //10
 //Nullish values are null and undefined (NOT 0 or '')
 const guestCorrect = restaurant.numGuests ?? 10;
 console.log(guestCorrect); //0
-/*
+
 //Short Circuiting (&& and ||)
 //Logical operators can use ANY data type, return ANY data type, and short-circuiting.
 //Short Circuiting is where if the first operand is truthy in an OR operator then the other operand will not even be evaluated.
