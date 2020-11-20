@@ -1,5 +1,22 @@
 "use strict";
 
+const weekdays = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+
+const openingHours = {
+  [weekdays[3]]: {
+    open: 12,
+    close: 22,
+  },
+  [weekdays[4]]: {
+    open: 11,
+    close: 23,
+  },
+  [weekdays[5]]: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
+
 const restaurant = {
   name: "Classico Italiano",
   location: "Via Angelo Tavanti 23, Firenze, Italy",
@@ -7,44 +24,103 @@ const restaurant = {
   starterMenu: ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
   mainMenu: ["Pizza", "Pasta", "Risotto"],
 
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
-  },
-  order: function (startIndex, mainIndex) {
+  //ES6 Enhanced object literals
+  openingHours, //from object above
+
+  order(startIndex, mainIndex) {
+    //old way - order: function (startIndex, mainIndex) {}
     return [this.starterMenu[startIndex], this.mainMenu[mainIndex]];
   },
-  orderDelivery: function ({
-    starterIndex = 1,
-    mainIndex = 0,
-    time = "20:00",
-    address,
-  }) {
+  orderDelivery({ starterIndex = 1, mainIndex = 0, time = "20:00", address }) {
     console.log(
       `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
     );
   },
 
-  orderPasta: function (ing1, ing2, ing3) {
+  orderPasta(ing1, ing2, ing3) {
     console.log(`Here is your delicious pasta with ${ing1}, ${ing2}, ${ing3} `);
   },
 
-  orderPizza: function (mainIngredient, ...otherIngredients) {
+  orderPizza(mainIngredient, ...otherIngredients) {
     console.log(mainIngredient);
     console.log(otherIngredients);
   },
 };
 
+///////////////////////////////////////////////
+//Looping Objects: object keys, values, and entries
+
+//Property names - use Object.keys(objectName)
+
+const properties = Object.keys(openingHours);
+console.log(properties);
+
+let openStr = `We are open for ${properties.length} days: `;
+
+for (const day of properties) {
+  openStr += `${day}, `;
+}
+console.log(openStr);
+
+//Property values - use Object.values(objectName)
+const values = Object.values(openingHours);
+console.log(values);
+
+//Entire object or Property names and values together - use Object.entries(objectName)
+const entries = Object.entries(openingHours);
+console.log(entries);
+
+//[key, value] - objects go key value - we use that in our destructuring
+for (const [day, { open, close }] of entries) {
+  console.log(`On ${day} we open at ${open} and close at ${close}`);
+}
+
+/*
+/////////////////////////////////////////////////////////
+//WITHOUT optional chaining
+if (restaurant.openingHours && restaurant.openingHours.mon) {
+  console.log(restaurant.openingHours.mon.open); //typeError
+}
+
+//WITH optional chaining (?.)
+//check if property or method exists on the left of the question mark
+console.log(restaurant.openingHours.mon?.open); //Undefined
+console.log(restaurant.openingHours?.mon?.open); //Undefined
+
+//Example
+const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+
+for (const day of days) {
+  //console.log(day);
+  const open = restaurant.openingHours[day]?.open ?? "closed"; //sat is falsy value
+  console.log(`on ${day}, we open at ${open}`);
+}
+
+//methods - we can check if a method actually exists before we call it
+//optional chaining will check if order exists
+console.log(restaurant.order?.(0, 1) ?? "Method does not exist"); // Output: our method output - it does exist
+//optional chaining will check if orderRisotto exists
+console.log(restaurant.orderRisotto?.(0, 1) ?? "Method does not exist"); // Output: Method does not exist
+
+//Arrays
+const users = [{ name: "Jonas", email: "hello@jonas.io" }];
+
+console.log(users[0]?.name ?? "They dont exist"); //Jonas
+console.log(users[0]?.age ?? " Age does not exist"); //Age does not exist
+
+//We always use the optional chaining operator (?.) and the nullish coalescing operator (??) together
+
+
+/////////////////////////////////////////////////////////
+//The for-of Loop
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+for (const item of menu) console.log(item);
+for (const [i, el] of menu.entries()) {
+  console.log(`${i + 1}: ${el}`);
+}
+
+/////////////////////////////////////////////////////////
 //The nullish coalescing Operator (??)
 
 restaurant.numGuests = 0;
@@ -55,6 +131,7 @@ console.log(guests); //10
 const guestCorrect = restaurant.numGuests ?? 10;
 console.log(guestCorrect); //0
 
+/////////////////////////////////////////////////////////
 //Short Circuiting (&& and ||)
 //Logical operators can use ANY data type, return ANY data type, and short-circuiting.
 //Short Circuiting is where if the first operand is truthy in an OR operator then the other operand will not even be evaluated.
@@ -90,6 +167,7 @@ if (restaurant.orderPizza) {
 
 restaurant.orderPizza && restaurant.orderPizza("mushrooms", "spinach");
 
+/////////////////////////////////////////////////////////
 //Rest pattern and parameters
 //1. Destructuring
 
@@ -128,7 +206,7 @@ add(...x);
 restaurant.orderPizza("mushrooms", "onion", "garlic");
 restaurant.orderPizza("mushrooms");
 
-///////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////
 //practical application of destructuring
 restaurant.orderDelivery({
   time: "22:30",
@@ -165,6 +243,8 @@ console.log(i, j, k);
 const [p = 1, q = 1, r = 1] = [8, 9];
 console.log(p, q, r);
 
+
+/////////////////////////////////////////////////////////
 //destructuring objects
 const { name, openingHours, categories } = restaurant;
 console.log(name, openingHours, categories);
@@ -194,6 +274,7 @@ const {
 } = openingHours;
 console.log(o, c);
 
+/////////////////////////////////////////////////////////
 //The spread operator (...)
 const arr = [7, 8, 9];
 const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
@@ -239,3 +320,4 @@ const restaurantCopy = { ...restaurant };
 restaurantCopy.name = "Ristorante Roma";
 console.log(restaurantCopy.name);
 console.log(restaurant.name);
+*/
