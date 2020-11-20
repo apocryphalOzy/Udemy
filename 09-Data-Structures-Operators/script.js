@@ -47,6 +47,7 @@ const restaurant = {
   },
 };
 
+///////////////////////////////////////////////
 //Looping Objects: object keys, values, and entries
 
 //Property names - use Object.keys(objectName)
