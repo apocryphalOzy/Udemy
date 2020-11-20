@@ -45,6 +45,15 @@ const restaurant = {
   },
 };
 
+//The for-of Loop
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+for (const item of menu) console.log(item);
+for (const [i, el] of menu.entries()) {
+  console.log(`${i + 1}: ${el}`);
+}
+
+/*
 //The nullish coalescing Operator (??)
 
 restaurant.numGuests = 0;
@@ -239,3 +248,4 @@ const restaurantCopy = { ...restaurant };
 restaurantCopy.name = "Ristorante Roma";
 console.log(restaurantCopy.name);
 console.log(restaurant.name);
+*/
