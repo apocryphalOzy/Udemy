@@ -54,7 +54,7 @@ console.log(guests); //10
 //Nullish values are null and undefined (NOT 0 or '')
 const guestCorrect = restaurant.numGuests ?? 10;
 console.log(guestCorrect); //0
-/*
+
 //Short Circuiting (&& and ||)
 //Logical operators can use ANY data type, return ANY data type, and short-circuiting.
 //Short Circuiting is where if the first operand is truthy in an OR operator then the other operand will not even be evaluated.
@@ -89,7 +89,6 @@ if (restaurant.orderPizza) {
 }
 
 restaurant.orderPizza && restaurant.orderPizza("mushrooms", "spinach");
-
 
 //Rest pattern and parameters
 //1. Destructuring
@@ -128,7 +127,6 @@ add(...x);
 //real world edge case
 restaurant.orderPizza("mushrooms", "onion", "garlic");
 restaurant.orderPizza("mushrooms");
-
 
 ///////////////////////////////////////////////////////////////////////////////
 //practical application of destructuring
@@ -241,4 +239,3 @@ const restaurantCopy = { ...restaurant };
 restaurantCopy.name = "Ristorante Roma";
 console.log(restaurantCopy.name);
 console.log(restaurant.name);
-*/
