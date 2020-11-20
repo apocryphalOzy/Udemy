@@ -47,6 +47,34 @@ const restaurant = {
   },
 };
 
+//Looping Objects: object keys, values, and entries
+
+//Property names - use Object.keys(objectName)
+
+const properties = Object.keys(openingHours);
+console.log(properties);
+
+let openStr = `We are open for ${properties.length} days: `;
+
+for (const day of properties) {
+  openStr += `${day}, `;
+}
+console.log(openStr);
+
+//Property values - use Object.values(objectName)
+const values = Object.values(openingHours);
+console.log(values);
+
+//Entire object or Property names and values together - use Object.entries(objectName)
+const entries = Object.entries(openingHours);
+console.log(entries);
+
+//[key, value] - objects go key value - we use that in our destructuring
+for (const [day, { open, close }] of entries) {
+  console.log(`On ${day} we open at ${open} and close at ${close}`);
+}
+
+/*
 /////////////////////////////////////////////////////////
 //WITHOUT optional chaining
 if (restaurant.openingHours && restaurant.openingHours.mon) {
@@ -70,7 +98,7 @@ for (const day of days) {
 //methods - we can check if a method actually exists before we call it
 //optional chaining will check if order exists
 console.log(restaurant.order?.(0, 1) ?? "Method does not exist"); // Output: our method output - it does exist
-//optional chaining will check if orderRisotto exsits
+//optional chaining will check if orderRisotto exists
 console.log(restaurant.orderRisotto?.(0, 1) ?? "Method does not exist"); // Output: Method does not exist
 
 //Arrays
@@ -81,7 +109,7 @@ console.log(users[0]?.age ?? " Age does not exist"); //Age does not exist
 
 //We always use the optional chaining operator (?.) and the nullish coalescing operator (??) together
 
-/*
+
 /////////////////////////////////////////////////////////
 //The for-of Loop
 const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
