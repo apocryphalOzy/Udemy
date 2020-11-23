@@ -47,6 +47,142 @@ const restaurant = {
   },
 };
 
+//Maps: Iteration
+const question = new Map([
+  ["question", "What is the best programming language in the world?"],
+  [1, "C"],
+  [2, "Java"],
+  [3, "JavaScript"],
+  ["correct", 3],
+  [true, "Correct"],
+  [false, "Try again!"],
+]);
+console.log(question);
+
+//convert object to map
+console.log(Object.entries(openingHours));
+
+const hoursMap = new Map(Object.entries(openingHours));
+console.log(hoursMap);
+
+//quiz app
+console.log(question.get("question"));
+//iteration on maps
+//good use case on destructuring
+for (const [key, value] of question) {
+  if (typeof key === "number") console.log(`Answer ${key}: ${value}`);
+}
+
+//const answer = Number(prompt("Your answer"));
+const answer = 3;
+
+console.log(question.get(question.get("correct") === answer));
+
+//convert map to array
+console.log([...question]);
+console.log([...question.entries()]);
+console.log([...question.keys()]);
+console.log([...question.values()]);
+
+/*
+///////////////////////////////////////////////
+//Maps: Fundamentals
+
+//fill in a map using the set method
+const rest = new Map();
+rest.set("name", "Classico Italiano");
+rest.set(1, "Firenze, Italy");
+rest.set(2, "Lisbon, Portugal");
+
+//we can chain the set method
+rest
+  .set("categories", ["Italian", "Pizzeria", "Vegetarian", "Organic"])
+  .set("open", 11)
+  .set("close", 23)
+  .set(true, "We are open :D")
+  .set(false, "We are closed QQ");
+
+//read data from a map using get method
+console.log(rest.get("name"));
+console.log(rest.get(true));
+console.log(rest.get(1));
+
+//Use case
+const time = 21;
+console.log(rest.get(time > rest.get("open") && time < rest.get("close")));
+
+//check if map contains a certain key
+console.log(rest.has("categories"));
+
+//delete elements from the map - not encouraged for properties
+rest.delete(2);
+console.log(rest); //deletes 2, "Lisbon, Portugal"
+
+//remove all elements from the map
+//rest.clear();
+
+//size property
+console.log(rest.size);
+
+//use array or objects as keys
+const arr = [1, 2];
+rest.set(arr, "Test");
+rest.set(document.querySelector("h1"), "Heading");
+console.log(rest.get(arr));
+
+console.log(rest);
+/*
+///////////////////////////////////////////////
+//Sets
+
+const ordersSet = new Set([
+  "Pasta",
+  "Pizza",
+  "Pizza",
+  "Risotto",
+  "Pasta",
+  "Pizza",
+]);
+
+console.log(ordersSet);
+
+//strings are also iterables
+console.log(new Set("Jeremy"));
+
+//determine number of values in set
+console.log(ordersSet.size);
+
+//check if a certain element is in a set
+console.log(ordersSet.has("Pizza"));
+console.log(ordersSet.has("Bread"));
+
+//add new elements to a set
+ordersSet.add("Garlic Bread");
+console.log(ordersSet);
+
+//we can delete elements from a set
+ordersSet.delete("Risotto");
+console.log(ordersSet);
+//delete ALL elements from a set
+//ordersSet.clear();
+//console.log(ordersSet);
+//Sets have no indexes
+
+//loop through a set since sets are iterables
+for (const order of ordersSet) console.log(order);
+
+//USE CASE FOR SETS - to remove duplicate values of arrays
+const staff = ["Waiter", "Chef", "Waiter", "Manager", "Chef", "Waiter"];
+const staffUnique = [...new Set(staff)];
+console.log(staffUnique);
+
+console.log(
+  new Set(["Waiter", "Chef", "Waiter", "Manager", "Chef", "Waiter"]).size
+);
+
+console.log(new Set("JohnJacobJingleHeimerSmit").size);
+
+/*
 ///////////////////////////////////////////////
 //Looping Objects: object keys, values, and entries
 
@@ -75,7 +211,7 @@ for (const [day, { open, close }] of entries) {
   console.log(`On ${day} we open at ${open} and close at ${close}`);
 }
 
-/*
+
 /////////////////////////////////////////////////////////
 //WITHOUT optional chaining
 if (restaurant.openingHours && restaurant.openingHours.mon) {
