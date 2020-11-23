@@ -47,6 +47,53 @@ const restaurant = {
   },
 };
 
+//Maps: Fundamentals
+
+//fill in a map using the set method
+const rest = new Map();
+rest.set("name", "Classico Italiano");
+rest.set(1, "Firenze, Italy");
+rest.set(2, "Lisbon, Portugal");
+
+//we can chain the set method
+rest
+  .set("categories", ["Italian", "Pizzeria", "Vegetarian", "Organic"])
+  .set("open", 11)
+  .set("close", 23)
+  .set(true, "We are open :D")
+  .set(false, "We are closed QQ");
+
+//read data from a map using get method
+console.log(rest.get("name"));
+console.log(rest.get(true));
+console.log(rest.get(1));
+
+//Use case
+const time = 21;
+console.log(rest.get(time > rest.get("open") && time < rest.get("close")));
+
+//check if map contains a certain key
+console.log(rest.has("categories"));
+
+//delete elements from the map - not encouraged for properties
+rest.delete(2);
+console.log(rest); //deletes 2, "Lisbon, Portugal"
+
+//remove all elements from the map
+//rest.clear();
+
+//size property
+console.log(rest.size);
+
+//use array or objects as keys
+const arr = [1, 2];
+rest.set(arr, "Test");
+rest.set(document.querySelector("h1"), "Heading");
+console.log(rest.get(arr));
+
+console.log(rest);
+/*
+///////////////////////////////////////////////
 //Sets
 
 const ordersSet = new Set([
