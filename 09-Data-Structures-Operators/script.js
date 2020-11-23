@@ -47,6 +47,56 @@ const restaurant = {
   },
 };
 
+//Sets
+
+const ordersSet = new Set([
+  "Pasta",
+  "Pizza",
+  "Pizza",
+  "Risotto",
+  "Pasta",
+  "Pizza",
+]);
+
+console.log(ordersSet);
+
+//strings are also iterables
+console.log(new Set("Jeremy"));
+
+//determine number of values in set
+console.log(ordersSet.size);
+
+//check if a certain element is in a set
+console.log(ordersSet.has("Pizza"));
+console.log(ordersSet.has("Bread"));
+
+//add new elements to a set
+ordersSet.add("Garlic Bread");
+console.log(ordersSet);
+
+//we can delete elements from a set
+ordersSet.delete("Risotto");
+console.log(ordersSet);
+//delete ALL elements from a set
+//ordersSet.clear();
+//console.log(ordersSet);
+//Sets have no indexes
+
+//loop through a set since sets are iterables
+for (const order of ordersSet) console.log(order);
+
+//USE CASE FOR SETS - to remove duplicate values of arrays
+const staff = ["Waiter", "Chef", "Waiter", "Manager", "Chef", "Waiter"];
+const staffUnique = [...new Set(staff)];
+console.log(staffUnique);
+
+console.log(
+  new Set(["Waiter", "Chef", "Waiter", "Manager", "Chef", "Waiter"]).size
+);
+
+console.log(new Set("JohnJacobJingleHeimerSmit").size);
+
+/*
 ///////////////////////////////////////////////
 //Looping Objects: object keys, values, and entries
 
@@ -75,7 +125,7 @@ for (const [day, { open, close }] of entries) {
   console.log(`On ${day} we open at ${open} and close at ${close}`);
 }
 
-/*
+
 /////////////////////////////////////////////////////////
 //WITHOUT optional chaining
 if (restaurant.openingHours && restaurant.openingHours.mon) {
