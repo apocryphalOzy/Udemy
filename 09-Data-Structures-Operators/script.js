@@ -47,6 +47,194 @@ const restaurant = {
   },
 };
 
+//Working with Strings - Part 2
+
+//split method
+console.log("a+very+nice+string".split("+"));
+console.log("Jonas Schmedtmann".split(" "));
+
+const [firstName, lastName] = "Jonas Schmedtmann".split(" ");
+
+//join method
+const newName = ["Mr.", firstName, lastName.toUpperCase()].join(" ");
+console.log(newName);
+
+const capitalizeName = function (name) {
+  const names = name.split(" ");
+  const namesUpper = [];
+  for (const n of names) {
+    //namesUpper.push(n[0].toUpperCase() + n.slice(1));
+
+    //another way of doing the above
+    namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+  }
+  console.log(namesUpper.join(" "));
+};
+
+capitalizeName("jessica ann smith davis");
+capitalizeName("john jacob jingle heimer smith");
+
+//padding a string
+const message = "Go to gate 23!";
+console.log(message.padStart(25, "+").padEnd(30, "+"));
+console.log("Jonas".padStart(25, "+").padEnd(30, "+"));
+
+//padding with a function
+const maskCreditCard = function (number) {
+  const str = number + ""; //convert numbers to string - can also use String();
+  const last = str.slice(-4);
+  return last.padStart(str.length, "*");
+};
+
+console.log(maskCreditCard(3924723194712348));
+console.log(maskCreditCard(12345678));
+console.log(maskCreditCard("9349534587349785234897"));
+
+//repeat method
+const message2 = "Bad weather... All departures Delayed... ";
+console.log(message2.repeat(5));
+
+const planesInLine = function (n) {
+  console.log(`There are ${n} planes in line ${"✈".repeat(n)}`);
+};
+planesInLine(5);
+planesInLine(3);
+planesInLine(12);
+
+///////////////////////////////////////////////
+//Working with Strings - Part 2
+
+const airline = "TAP Air Portugal";
+
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+
+//fix capitalization in a name
+const passenger = "JeReMy";
+const passengerLower = passenger.toLowerCase();
+const passengerCorrect =
+  passengerLower[0].toUpperCase() + passengerLower.slice(1);
+console.log(passengerCorrect);
+//function that does the same thing
+const passengerName = function (name) {
+  const passenger = name;
+  const passengerLower = passenger.toLowerCase();
+  const passengerCorrect =
+    passengerLower[0].toUpperCase() + passengerLower.slice(1);
+  console.log(passengerCorrect);
+};
+passengerName("heNrY");
+passengerName("DaRLene");
+
+//compare user input email
+const email = "hello@jonas.io";
+const loginEmail = "  Hello@Jonas.Io \n";
+
+const lowerEmail = loginEmail.toLowerCase();
+const trimmedEmail = lowerEmail.trim(); //removes whitespace from both ends of a string
+console.log(trimmedEmail);
+
+//we can do above all in 1 step
+const normalizedEmail = loginEmail.toLowerCase().trim();
+console.log(normalizedEmail);
+console.log(email === normalizedEmail);
+
+//write a function that takes the 2 emails and compares them
+const compareEmails = function (email1, email2) {
+  const normalizeEmail2 = email2.toLowerCase().trim();
+  return email1 === normalizeEmail2;
+};
+console.log(compareEmails("jeremy@jeremy.com", "  JeReMy@jeReMy.Com    "));
+
+//replace parts of strings
+const priceGB = "288,97£";
+const priceUs = priceGB.replace("£", "$").replace(",", ".");
+console.log(priceUs);
+
+const announcement =
+  "All passengers come to boarding door 23. Boarding door 23";
+
+console.log(announcement.replaceAll("door", "gate"));
+
+//REGEX with replacing strings
+console.log(announcement.replaceAll(/door/g, "gate"));
+
+//Boolean methods on string - includes, startswith, endswith
+const plane = "Airbus A320neo";
+console.log(plane.includes("A320"));
+console.log(plane.includes("Boeing"));
+console.log(plane.startsWith("Air"));
+
+if (plane.startsWith("Airbus") && plane.endsWith("neo")) {
+  console.log("Part of the New Airbus family");
+}
+
+//practice exercise
+const checkBaggage = function (items) {
+  //always put things to lowercase when checking
+  const baggage = items.toLowerCase();
+  if (baggage.includes("knife") || baggage.includes("gun")) {
+    console.log("You are NOT allowed on board");
+  } else {
+    console.log("WELCOME ABOARD");
+  }
+};
+
+checkBaggage("I have a laptop, some Food and a pocket Knife");
+checkBaggage("Sock and camera");
+checkBaggage("Got some snacks and a gun for protection");
+
+///////////////////////////////////////////////
+
+//Working with Strings - Part 1
+
+const airline = "TAP Air Portugal";
+const plane = "A320";
+
+console.log(plane[0]);
+console.log(plane[1]);
+console.log(plane[2]);
+console.log("B737"[2]);
+
+console.log(airline.length);
+console.log("b737".length);
+
+//methods for strings
+console.log(airline.indexOf("r"));
+//get let position of 'r'
+console.log(airline.lastIndexOf("r"));
+
+console.log(airline.indexOf("portugal")); //-1 because portugal with lowercase p cant be found in airline
+
+//use case is for slicing strings
+console.log(airline.slice(4));
+console.log(airline.slice(4, 7));
+
+console.log(airline.slice(0, airline.indexOf(" "))); //TAP
+console.log(airline.slice(airline.lastIndexOf(" ") + 1)); //Portugal
+
+//extract letter from the end of a string
+console.log(airline.slice(-2)); //al
+console.log(airline.slice(1, -1)); //AP Air Portug
+
+//using a function
+
+const checkMiddleSeat = function (seat) {
+  //B and E are middle seats
+  const s = seat.slice(-1);
+  if (s === "B" || s === "E") {
+    console.log("You go the middle seat");
+  } else {
+    console.log("You got lucky");
+  }
+};
+
+checkMiddleSeat("11B");
+checkMiddleSeat("23C");
+checkMiddleSeat("3E");
+
+/*
+///////////////////////////////////////////////
 //Maps: Iteration
 const question = new Map([
   ["question", "What is the best programming language in the world?"],
