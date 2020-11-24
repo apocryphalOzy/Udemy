@@ -101,7 +101,6 @@ planesInLine(5);
 planesInLine(3);
 planesInLine(12);
 
-/*
 ///////////////////////////////////////////////
 //Working with Strings - Part 2
 
@@ -184,7 +183,7 @@ const checkBaggage = function (items) {
 checkBaggage("I have a laptop, some Food and a pocket Knife");
 checkBaggage("Sock and camera");
 checkBaggage("Got some snacks and a gun for protection");
-/*
+
 ///////////////////////////////////////////////
 
 //Working with Strings - Part 1
