@@ -47,6 +47,54 @@ const restaurant = {
   },
 };
 
+//Working with Strings - Part 1
+const airline = "TAP Air Portugal";
+const plane = "A320";
+
+console.log(plane[0]);
+console.log(plane[1]);
+console.log(plane[2]);
+console.log("B737"[2]);
+
+console.log(airline.length);
+console.log("b737".length);
+
+//methods for strings
+console.log(airline.indexOf("r"));
+//get let position of 'r'
+console.log(airline.lastIndexOf("r"));
+
+console.log(airline.indexOf("portugal")); //-1 because portugal with lowercase p cant be found in airline
+
+//use case is for slicing strings
+console.log(airline.slice(4));
+console.log(airline.slice(4, 7));
+
+console.log(airline.slice(0, airline.indexOf(" "))); //TAP
+console.log(airline.slice(airline.lastIndexOf(" ") + 1)); //Portugal
+
+//extract letter from the end of a string
+console.log(airline.slice(-2)); //al
+console.log(airline.slice(1, -1)); //AP Air Portug
+
+//using a function
+
+const checkMiddleSeat = function (seat) {
+  //B and E are middle seats
+  const s = seat.slice(-1);
+  if (s === "B" || s === "E") {
+    console.log("You go the middle seat");
+  } else {
+    console.log("You got lucky");
+  }
+};
+
+checkMiddleSeat("11B");
+checkMiddleSeat("23C");
+checkMiddleSeat("3E");
+
+/*
+///////////////////////////////////////////////
 //Maps: Iteration
 const question = new Map([
   ["question", "What is the best programming language in the world?"],
