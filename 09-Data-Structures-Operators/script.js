@@ -47,7 +47,92 @@ const restaurant = {
   },
 };
 
+//Working with Strings - Part 2
+
+const airline = "TAP Air Portugal";
+
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+
+//fix capitalization in a name
+const passenger = "JeReMy";
+const passengerLower = passenger.toLowerCase();
+const passengerCorrect =
+  passengerLower[0].toUpperCase() + passengerLower.slice(1);
+console.log(passengerCorrect);
+//function that does the same thing
+const passengerName = function (name) {
+  const passenger = name;
+  const passengerLower = passenger.toLowerCase();
+  const passengerCorrect =
+    passengerLower[0].toUpperCase() + passengerLower.slice(1);
+  console.log(passengerCorrect);
+};
+passengerName("heNrY");
+passengerName("DaRLene");
+
+//compare user input email
+const email = "hello@jonas.io";
+const loginEmail = "  Hello@Jonas.Io \n";
+
+const lowerEmail = loginEmail.toLowerCase();
+const trimmedEmail = lowerEmail.trim(); //removes whitespace from both ends of a string
+console.log(trimmedEmail);
+
+//we can do above all in 1 step
+const normalizedEmail = loginEmail.toLowerCase().trim();
+console.log(normalizedEmail);
+console.log(email === normalizedEmail);
+
+//write a function that takes the 2 emails and compares them
+const compareEmails = function (email1, email2) {
+  const normalizeEmail2 = email2.toLowerCase().trim();
+  return email1 === normalizeEmail2;
+};
+console.log(compareEmails("jeremy@jeremy.com", "  JeReMy@jeReMy.Com    "));
+
+//replace parts of strings
+const priceGB = "288,97£";
+const priceUs = priceGB.replace("£", "$").replace(",", ".");
+console.log(priceUs);
+
+const announcement =
+  "All passengers come to boarding door 23. Boarding door 23";
+
+console.log(announcement.replaceAll("door", "gate"));
+
+//REGEX with replacing strings
+console.log(announcement.replaceAll(/door/g, "gate"));
+
+//Boolean methods on string - includes, startswith, endswith
+const plane = "Airbus A320neo";
+console.log(plane.includes("A320"));
+console.log(plane.includes("Boeing"));
+console.log(plane.startsWith("Air"));
+
+if (plane.startsWith("Airbus") && plane.endsWith("neo")) {
+  console.log("Part of the New Airbus family");
+}
+
+//practice exercise
+const checkBaggage = function (items) {
+  //always put things to lowercase when checking
+  const baggage = items.toLowerCase();
+  if (baggage.includes("knife") || baggage.includes("gun")) {
+    console.log("You are NOT allowed on board");
+  } else {
+    console.log("WELCOME ABOARD");
+  }
+};
+
+checkBaggage("I have a laptop, some Food and a pocket Knife");
+checkBaggage("Sock and camera");
+checkBaggage("Got some snacks and a gun for protection");
+/*
+///////////////////////////////////////////////
+
 //Working with Strings - Part 1
+
 const airline = "TAP Air Portugal";
 const plane = "A320";
 
