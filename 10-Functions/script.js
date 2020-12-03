@@ -1,6 +1,5 @@
 'use strict';
 
-/*
 //default parameters
 const bookings = [];
 
@@ -55,7 +54,6 @@ const newPassport = function (person) {
 
 newPassport(jonas);
 checkIn(flight, jonas);
-*/
 
 //Functions Accepting Callback Functions
 const oneWord = function (str) {
@@ -84,3 +82,118 @@ const high5 = function () {
 document.body.addEventListener('click', high5);
 
 ['Jonas', 'Martha', 'Adam'].forEach(high5);
+
+//Functions Returning Functiions
+const greet = function (greeting) {
+  return function (name) {
+    console.log(`${greeting} ${name}`);
+  };
+};
+
+const greeterHey = greet('Hey');
+greeterHey('Jonas');
+greeterHey('Steven');
+//same as above but all in one go
+greet('hello')('Jonas');
+//rewrite function as an arrow function
+const greetArr = greeting => name => console.log(`${greeting} ${name}`);
+greetArr('hi')('Jonas');
+
+//The Call and apply methods
+const lufthansa = {
+  airline: 'Lufthansa',
+  iataCode: 'LH',
+  bookings: [],
+  //book: function() {}
+  //enhanced object literal syntax
+  book(flightNum, name) {
+    console.log(
+      `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
+    );
+    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
+  },
+};
+
+lufthansa.book(239, 'Jonas Schmedtmann');
+lufthansa.book(635, 'John Smith');
+console.log(lufthansa.bookings);
+
+const eurowings = {
+  airline: 'Eurowings',
+  iataCode: 'EW',
+  bookings: [],
+};
+
+const book = lufthansa.book;
+
+//DOES NOT WORK
+//book(23, 'Sarah Williams');
+
+//Call Method
+book.call(eurowings, 23, 'Sarah Williams');
+console.log(eurowings);
+
+book.call(lufthansa, 239, 'Mary Cooper');
+console.log(lufthansa.bookings);
+
+const swiss = {
+  airline: 'Swiss Air Lines',
+  iataCode: 'WE',
+  bookings: [],
+};
+
+book.call(swiss, 43, 'Mary Cooper');
+console.log(swiss);
+
+// Apply Method
+const flightData = [583, 'George Cooper'];
+book.apply(swiss, flightData);
+console.log(swiss);
+
+//more efficient way than the above 2
+book.call(swiss, ...flightData);
+
+//Bind Method
+const bookEW = book.bind(eurowings);
+bookEW(23, 'Steven Williams');
+const bookLH = book.bind(lufthansa);
+const bookLX = book.bind(swiss);
+
+//bind can have preset arguments - this is called partial application
+const bookEW23 = book.bind(eurowings, 23);
+bookEW23('Jonas Schmedtmann');
+bookEW23('Martha Cooper');
+
+// with Event Listeners
+lufthansa.planes = 300;
+lufthansa.buyPlane = function () {
+  console.log(this);
+  this.planes++;
+  console.log(this.planes);
+};
+// lufthansa.buyPlane();
+
+document
+  .querySelector('.buy')
+  .addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
+
+//Partial application
+const addTax = (rate, value) => value + value * rate;
+console.log(addTax(0.1, 200));
+
+const addVAT = addTax.bind(null, 0.23);
+// addVAT = value => value + value * .23; //same as above
+
+console.log(addVAT(100));
+console.log(addVAT(23));
+
+//arrow function to normal function
+const addTaxRate = function (rate) {
+  return function (value) {
+    return value + value * rate;
+  };
+};
+const addVAT2 = addTaxRate(0.23);
+
+console.log(addVAT2(100));
+console.log(addVAT2(23));
