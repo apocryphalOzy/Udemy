@@ -1,5 +1,5 @@
 'use strict';
-
+/*
 //default parameters
 const bookings = [];
 
@@ -197,3 +197,83 @@ const addVAT2 = addTaxRate(0.23);
 
 console.log(addVAT2(100));
 console.log(addVAT2(23));
+
+
+//Immediately invoked function expressions (IIFE) - anonymous
+
+//regular function
+const runOnce = function () {
+  console.log('This will never run again');
+};
+//call function
+runOnce();
+
+//IIFE example
+(function () {
+  console.log('This will never run gain. Part 2...');
+})(); // <---the parentheses call the function
+
+//IIFE Arrow function example
+
+(() => console.log('This will ALSO never run again. part 3...'))();
+*/
+
+//Closures
+
+const secureBooking = function () {
+  let passengerCount = 0;
+  return function () {
+    passengerCount++;
+    console.log(`${passengerCount} passengers`);
+  };
+};
+
+const booker = secureBooking();
+
+booker();
+booker();
+booker();
+
+console.dir(booker);
+
+//closure examples
+//example 1
+let f;
+
+const g = function () {
+  const a = 23;
+  f = function () {
+    console.log(a * 2);
+  };
+};
+
+const h = function () {
+  const b = 777;
+  f = function () {
+    console.log(b * 2);
+  };
+};
+
+g();
+f();
+console.dir(f);
+
+//re-assigning f functioni
+h();
+f();
+console.dir(f);
+
+//example 2
+const boardPassengers = function (n, wait) {
+  const perGroup = n / 3;
+
+  setTimeout(function () {
+    console.log(`We are now boarding all ${n} passengers`);
+    console.log(`There are 3 groups each with ${perGroup} passengers`);
+  }, wait * 1000);
+  console.log(`Will start boarding in ${wait} seconds`);
+};
+
+//closure has priority over scope chain so this global variable below wont be used
+const perGroup = 1000;
+boardPassengers(180, 3);

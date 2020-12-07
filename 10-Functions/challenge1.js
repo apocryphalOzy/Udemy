@@ -48,3 +48,13 @@ document
 //The call() method calls a function with a given this value and arguments provided individually.
 poll.displayResults.call({ answers: [5, 2, 3] });
 poll.displayResults.call({ answers: [1, 5, 3, 9, 6] }, 'string');
+
+//Challenge 2
+
+(function () {
+  const header = document.querySelector('h1');
+  header.style.color = 'red';
+  header.addEventListener('click', function () {
+    header.style.color = 'blue';
+  });
+})();
