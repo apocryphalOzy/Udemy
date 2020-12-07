@@ -1,5 +1,5 @@
 'use strict';
-
+/*
 //default parameters
 const bookings = [];
 
@@ -197,3 +197,22 @@ const addVAT2 = addTaxRate(0.23);
 
 console.log(addVAT2(100));
 console.log(addVAT2(23));
+*/
+
+//Immediately invoked function expressions (IIFE) - anonymous
+
+//regular function
+const runOnce = function () {
+  console.log('This will never run again');
+};
+//call function
+runOnce();
+
+//IIFE example
+(function () {
+  console.log('This will never run gain. Part 2...');
+})(); // <---the parentheses call the function
+
+//IIFE Arrow function example
+
+(() => console.log('This will ALSO never run again. part 3...'))();
