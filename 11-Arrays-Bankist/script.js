@@ -208,3 +208,20 @@ const movementsDescription = movements.map(
 );
 console.log(movementsDescription);
 */
+
+//FILTER method - creates a new array with all elements that pass the test implemented by the provided function
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const deposits = movements.filter(function (mov, i, arr) {
+  return mov > 0;
+});
+console.log(deposits);
+
+//filter compared to for of loop
+//reason we dont use this is because there is a push to functional programming and method chaining
+const depositsFor = [];
+for (const move of movements) if (move > 0) depositsFor.push(move);
+console.log(depositsFor);
+
+const withdrawals = movements.filter(mov => mov < 0);
+console.log(withdrawals);
