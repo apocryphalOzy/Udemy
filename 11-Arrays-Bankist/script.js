@@ -78,6 +78,18 @@ const displayMovements = function (movements) {
   });
 };
 displayMovements(account1.movements);
+const createUsernames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('');
+  });
+};
+
+createUsernames(accounts); //output stw
+console.log(accounts);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -164,7 +176,7 @@ console.log(currenciesUnique);
 currenciesUnique.forEach(function (value, _, map) {
   console.log(`${_}: ${value}`);
 });
-*/
+
 
 //MAP method - creates a new array populated with the results of calling a provided function on every element in the calling array.
 
@@ -195,3 +207,4 @@ const movementsDescription = movements.map(
     `Movement ${i + 1}: You ${m > 0 ? 'deposited' : 'withdrew'} ${Math.abs(m)}`
 );
 console.log(movementsDescription);
+*/
