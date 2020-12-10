@@ -61,16 +61,107 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+const displayMovements = function (movements) {
+  containerMovements.innerHTML = '';
+  movements.forEach(function (mov, i) {
+    const type = mov > 0 ? 'deposit' : 'withdrawal';
+    const html = `
+      <div class="movements__row">
+        <div class="movements__type movements__type--${type}">${
+      i + 1
+    } ${type}</div>
+        <div class="movements__value">${mov}</div>
+      </div>
+        `;
+
+    containerMovements.insertAdjacentHTML('afterbegin', html);
+  });
+};
+displayMovements(account1.movements);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
+////////////////////////////////////////////////
+/*
+let arr = ['a', 'b', 'c', 'd', 'e'];
 
+//slice method - extract part of any array without changing the original array
+console.log(arr.slice(2));
+console.log(arr.slice(2, 4));
+console.log(arr.slice(-2));
+console.log(arr.slice(-1));
+console.log(arr.slice(1, -2));
+//shallow copy of an array
+console.log(arr.slice());
+//another shallow copy
+console.log([...arr]);
+
+//splice method - same as slice, but changes/mutates the original array
+// console.log(arr.splice(2));
+arr.splice(-1);
+console.log(arr);
+
+//REVERSE method - reverse an array and mutates the original array to reverse. switch last index value to first index value
+arr = ['a', 'b', 'c', 'd', 'e'];
+const arr2 = ['j', 'i', 'h', 'g', 'f'];
+console.log(arr2.reverse());
+console.log(arr2);
+
+//CONCAT method - concatenates two arrays
+const letters = arr.concat(arr2);
+console.log(letters);
+//same as above
+console.log([...arr, ...arr2]);
+
+//JOIN method
+console.log(letters.join(' - '));
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// for (const movement of movements) {
+//   if (movement > 0) {
+//     console.log(`You deposited ${movement}`);
+//   } else {
+//     console.log(`You withdrew ${Math.abs(movement)}`);
+//   }
+// }
+
+//access counter variable in for of loop
+for (const [i, movement] of movements.entries()) {
+  if (movement > 0) {
+    console.log(`Movement ${i + 1}: You deposited ${movement}`);
+  } else {
+    console.log(`Movement ${i + 1}: You withdrew ${Math.abs(movement)}`);
+  }
+}
+
+//FOREACH METHOD
+console.log('------FOREACH------');
+movements.forEach(function (m, i, arr) {
+  if (m > 0) {
+    console.log(`Movement ${i + 1}: You deposited ${m}`);
+  } else {
+    console.log(`Movement ${i + 1}: You withdrew ${Math.abs(m)}`);
+  }
+});
+
+
+//Map
 const currencies = new Map([
   ['USD', 'United States dollar'],
   ['EUR', 'Euro'],
   ['GBP', 'Pound sterling'],
 ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+currencies.forEach(function (value, key, map) {
+  console.log(`${key}: ${value}`);
+});
 
-/////////////////////////////////////////////////
+//Set
+const currenciesUnique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR']);
+console.log(currenciesUnique);
+currenciesUnique.forEach(function (value, _, map) {
+  console.log(`${_}: ${value}`);
+});
+*/
