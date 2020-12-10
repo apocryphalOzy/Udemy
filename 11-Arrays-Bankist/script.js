@@ -165,3 +165,33 @@ currenciesUnique.forEach(function (value, _, map) {
   console.log(`${_}: ${value}`);
 });
 */
+
+//MAP method - creates a new array populated with the results of calling a provided function on every element in the calling array.
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const eurToUsd = 1.1;
+
+//map method in practice
+//this is a functional programming paradigm
+const movementsUSD = movements.map(function (mov) {
+  return mov * eurToUsd;
+});
+
+console.log(movements);
+console.log(movementsUSD);
+
+//compared to a for of
+const movementsUSDfor = [];
+for (const mov of movements) movementsUSDfor.push(mov * eurToUsd);
+console.log(movementsUSDfor);
+
+//arrow function using the map method
+const movementsUSD1 = movements.map(mov => mov * eurToUsd);
+console.log(movementsUSD1);
+
+//map method with template literal and ternary operator
+const movementsDescription = movements.map(
+  (m, i) =>
+    `Movement ${i + 1}: You ${m > 0 ? 'deposited' : 'withdrew'} ${Math.abs(m)}`
+);
+console.log(movementsDescription);
