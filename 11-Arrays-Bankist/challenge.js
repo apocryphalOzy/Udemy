@@ -66,28 +66,55 @@ const checkDogs = function (dogsJulia, dogsKate) {
 const data1 = [5, 2, 4, 1, 15, 8, 3];
 const data2 = [16, 6, 10, 5, 6, 1, 4];
 
-const calcAverageHumanAge = function (ages) {
-  const dogAge = ages.map(function (age) {
-    if (age <= 2) {
-      return age * 2;
-    } else {
-      return 16 + age * 4;
-    }
-  });
-  console.log(dogAge);
+// const calcAverageHumanAge = function (ages) {
+//   const dogAge = ages.map(function (age) {
+//     if (age <= 2) {
+//       return age * 2;
+//     } else {
+//       return 16 + age * 4;
+//     }
+//   });
+//   console.log(dogAge);
 
-  const dogFilter = dogAge.filter(age => age >= 18);
-  console.log(dogFilter);
+//   const dogFilter = dogAge.filter(age => age >= 18);
+//   console.log(dogFilter);
 
-  //MY WAY
-  // const dogAverage = dogFilter.reduce(
-  //   (acc, cur, i , arr) => acc + cur / arr.length,
-  //   0
-  // );
-  //HIS WAY
-  const dogAverage =
-    dogFilter.reduce((acc, age) => acc + age, 0) / dogFilter.length;
-  console.log(dogAverage);
+//   //MY WAY
+//   // const dogAverage = dogFilter.reduce(
+//   //   (acc, cur, i , arr) => acc + cur / arr.length,
+//   //   0
+//   // );
+//   //HIS WAY
+//   const dogAverage =
+//     dogFilter.reduce((acc, age) => acc + age, 0) / dogFilter.length;
+//   console.log(dogAverage);
+// };
+// calcAverageHumanAge(data1);
+// calcAverageHumanAge(data2);
+
+////////////////////////////////////////
+//CHALLENGE 3
+////////////////////////////////////////
+
+// Rewrite the 'calcAverageHumanAge' function from Challenge #2, but this time
+// as an arrow function, and using chaining!
+// Test data:
+// § Data 1: [5, 2, 4, 1, 15, 8, 3]
+// § Data 2: [16, 6, 10, 5, 6, 1, 4]
+
+const calcAverageHumanAge1 = function (ages) {
+  const dogs = ages
+    .map(age => {
+      if (age <= 2) {
+        return age * 2;
+      } else {
+        return 16 + age * 4;
+      }
+    })
+    .filter(age => age >= 18)
+    .reduce((acc, age, i, arr) => acc + age / arr.length, 0);
+  return dogs;
 };
-calcAverageHumanAge(data1);
-calcAverageHumanAge(data2);
+
+console.log(calcAverageHumanAge1(data1));
+console.log(calcAverageHumanAge1(data2));
