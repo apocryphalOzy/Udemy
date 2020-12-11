@@ -77,6 +77,13 @@ const displayMovements = function (movements) {
     containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 };
+
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+calcDisplayBalance(account1.movements);
+
 displayMovements(account1.movements);
 const createUsernames = function (accs) {
   accs.forEach(function (acc) {
@@ -89,7 +96,6 @@ const createUsernames = function (accs) {
 };
 
 createUsernames(accounts); //output stw
-console.log(accounts);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -207,7 +213,7 @@ const movementsDescription = movements.map(
     `Movement ${i + 1}: You ${m > 0 ? 'deposited' : 'withdrew'} ${Math.abs(m)}`
 );
 console.log(movementsDescription);
-*/
+
 
 //FILTER method - creates a new array with all elements that pass the test implemented by the provided function
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
@@ -225,3 +231,28 @@ console.log(depositsFor);
 
 const withdrawals = movements.filter(mov => mov < 0);
 console.log(withdrawals);
+*/
+
+//Reduce method - executes a reducer function (that you provide) on each element of the array, resulting in single output value
+//usually used for adding up values, but can be used for finding max and min values
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+//accumulator -> like a snowball
+const balance = movements.reduce((acc, cur, i, arr) => acc + cur, 0); //<- this is the accumulator/initial value
+console.log(balance);
+
+//compared to for loop
+let balance2 = 0;
+for (const mov of movements) balance2 += mov;
+console.log(balance2);
+
+//finding maximum value in an aarray
+const max = movements.reduce((acc, mov) => {
+  if (acc > mov) {
+    return acc;
+  } else {
+    return mov;
+  }
+}, movements[0]);
+
+console.log(max);
