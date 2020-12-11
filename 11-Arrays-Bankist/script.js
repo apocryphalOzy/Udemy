@@ -184,7 +184,7 @@ currenciesUnique.forEach(function (value, _, map) {
 });
 
 
-//MAP method - creates a new array populated with the results of calling a provided function on every element in the calling array.
+/////////////MAP method - creates a new array populated with the results of calling a provided function on every element in the calling array.
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 const eurToUsd = 1.1;
@@ -215,7 +215,7 @@ const movementsDescription = movements.map(
 console.log(movementsDescription);
 
 
-//FILTER method - creates a new array with all elements that pass the test implemented by the provided function
+///////FILTER method - creates a new array with all elements that pass the test implemented by the provided function
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 const deposits = movements.filter(function (mov, i, arr) {
@@ -233,7 +233,7 @@ const withdrawals = movements.filter(mov => mov < 0);
 console.log(withdrawals);
 */
 
-//Reduce method - executes a reducer function (that you provide) on each element of the array, resulting in single output value
+//////////Reduce method - executes a reducer function (that you provide) on each element of the array, resulting in single output value
 //usually used for adding up values, but can be used for finding max and min values
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
