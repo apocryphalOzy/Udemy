@@ -101,7 +101,7 @@ const calcDisplaySummary = function (movements) {
     .filter(mov => mov > 0)
     .map(deposit => (deposit * 1.2) / 100)
     .filter((int, i, arr) => {
-      console.log(arr);
+      //console.log(arr);
       return int >= 1;
     })
     .reduce((acc, interest) => acc + interest, 0);
@@ -280,7 +280,7 @@ const max = movements.reduce((acc, mov) => {
 }, movements[0]);
 
 console.log(max);
-*/
+
 
 /////////////////////////////////////////////////
 //Chaining Methods
@@ -299,3 +299,18 @@ const totalDepositsUSD = movements
   })
   .reduce((acc, mov) => acc + mov, 0);
 console.log(totalDepositsUSD);
+*/
+
+/////////////////////////////////////////////////
+//Find Method
+/////////////////////////////////////////////////
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+//find method is used to retrieve one element of an array based on a condition.
+const firstWithdrawl = movements.find(mov => mov < 0);
+console.log(movements);
+console.log(firstWithdrawl);
+
+console.log(accounts);
+
+const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+console.log(account);
