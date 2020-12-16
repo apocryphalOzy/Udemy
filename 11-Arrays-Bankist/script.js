@@ -472,7 +472,7 @@ const overallBalance2 = accounts
   .flatMap(acc => acc.movements)
   .reduce((acc, mov) => acc + mov, 0);
 console.log(overallBalance2);
-*/
+
 /////////////////////////////////////////////////
 //sorting method
 /////////////////////////////////////////////////
@@ -519,3 +519,37 @@ movements.sort((a, b) => a - b); //ascending order - bottom up
 console.log(`Ascending Algo: ${movements}`);
 movements.sort((a, b) => b - a); //descending order - top down
 console.log(`Descending Algo: ${movements}`);
+*/
+/////////////////////////////////////////////////
+//ways to create and fill arrays
+/////////////////////////////////////////////////
+
+//creates new array with 7 empty elements
+const x = new Array(7);
+console.log(x);
+//fills array and mutates the original array
+// x.fill(1); output- [1,1,1,1,1,1,1]
+
+//we can specify a begin parameter
+x.fill(1, 3, 5); //output - [empty x 3, 1, 1, empty x 2]
+console.log(x);
+
+//can mutate already created arrays
+const arr = [1, 2, 3, 4, 5, 6, 7];
+arr.fill(23, 2, 6); //fill with 23 at position 2 to 6
+console.log(arr);
+
+//Array.from()
+const y = Array.from({ length: 7 }, () => 1);
+console.log(y); //output- [1,1,1,1,1,1,1]
+
+const z = Array.from({ length: 7 }, (_, i) => i + 1); //remember _ is a throwaway variable because we dont use it
+console.log(z); //output - [1, 2, 3, 4, 5, 6, 7]
+
+labelBalance.addEventListener('click', function () {
+  const movementsUI = Array.from(
+    document.querySelectorAll('.movements__value'),
+    el => Number(el.textContent.replace('₤', ''))
+  );
+  console.log(movementsUI);
+});
