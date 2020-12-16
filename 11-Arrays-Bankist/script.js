@@ -177,6 +177,20 @@ btnTransfer.addEventListener('click', function (e) {
   }
 });
 
+btnLoan.addEventListener('click', function (e) {
+  e.preventDefault();
+  const amount = Number(inputLoanAmount.value);
+
+  if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
+    //add movement
+    currentAccount.movements.push(amount);
+
+    //Update UI
+    updateUI(currentAccount);
+  }
+  inputLoanAmount.value = '';
+});
+
 btnClose.addEventListener('click', function (e) {
   e.preventDefault();
 
@@ -391,3 +405,27 @@ console.log(accounts);
 const account = accounts.find(acc => acc.owner === 'Jessica Davis');
 console.log(account);
 */
+
+/////////////////////////////////////////////////
+//some and every method
+/////////////////////////////////////////////////
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+console.log(movements);
+//checks equality
+console.log(movements.includes(-130));
+
+//checks some condition
+console.log(movements.some(mov => mov > 5000));
+console.log(movements.some(mov => mov > 1500));
+console.log(movements.some(mov => mov === -130));
+console.log(movements.some(mov => mov === -200));
+
+//EVERY method - every only returns true if all of the elements in the array satisfy the condition that we pass in
+console.log(movements.every(mov => mov > 0));
+console.log(account4.movements.every(mov => mov > 0));
+
+//separate callback
+const deposit = mov => mov > 0;
+console.log(movements.some(deposit));
+console.log(movements.every(deposit));
+console.log(movements.filter(deposit));
