@@ -61,9 +61,12 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-const displayMovements = function (movements) {
+const displayMovements = function (movements, sort = false) {
   containerMovements.innerHTML = '';
-  movements.forEach(function (mov, i) {
+
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+
+  movs.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
     const html = `
       <div class="movements__row">
@@ -209,6 +212,13 @@ btnClose.addEventListener('click', function (e) {
     containerApp.style.opacity = 0;
   }
   inputCloseUsername.value = inputClosePin.value = '';
+});
+
+let sorted = false;
+btnSort.addEventListener('click', function (e) {
+  e.preventDefault();
+  displayMovements(currentAccount.movements, !sorted);
+  sorted = !sorted;
 });
 
 /////////////////////////////////////////////////
@@ -429,7 +439,7 @@ const deposit = mov => mov > 0;
 console.log(movements.some(deposit));
 console.log(movements.every(deposit));
 console.log(movements.filter(deposit));
-*/
+
 /////////////////////////////////////////////////
 //flat and flatMap method
 /////////////////////////////////////////////////
@@ -462,3 +472,50 @@ const overallBalance2 = accounts
   .flatMap(acc => acc.movements)
   .reduce((acc, mov) => acc + mov, 0);
 console.log(overallBalance2);
+*/
+/////////////////////////////////////////////////
+//sorting method
+/////////////////////////////////////////////////
+
+//sorting strings
+const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
+//sort mutates original array
+console.log(owners.sort());
+console.log(owners);
+
+//sorting numbers
+//sort method does sorting based on strings
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+console.log(movements.sort());
+
+//return < 0  then A will be before B (returning -1 means keep order)
+// return > 0 then B will be before A (returning 1 means we switch order)
+movements.sort((a, b) => {
+  //sorting in ascending order
+  if (a > b) {
+    return 1;
+  }
+  if (a < b) {
+    return -1;
+  }
+});
+console.log(movements);
+movements.sort((a, b) => {
+  //sorting in descending order
+  if (a > b) {
+    return -1;
+  }
+  if (a < b) {
+    return 1;
+  }
+});
+console.log(movements);
+
+//improving our sort algorithm above
+//if a > b then a - b would be something positive
+//if a < b then a - b would be something negative
+//if a and b are the same(equal to zero) then the position of values will remain unchanged
+movements.sort((a, b) => a - b); //ascending order - bottom up
+console.log(`Ascending Algo: ${movements}`);
+movements.sort((a, b) => b - a); //descending order - top down
+console.log(`Descending Algo: ${movements}`);
