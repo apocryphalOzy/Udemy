@@ -404,7 +404,7 @@ console.log(accounts);
 
 const account = accounts.find(acc => acc.owner === 'Jessica Davis');
 console.log(account);
-*/
+
 
 /////////////////////////////////////////////////
 //some and every method
@@ -429,3 +429,36 @@ const deposit = mov => mov > 0;
 console.log(movements.some(deposit));
 console.log(movements.every(deposit));
 console.log(movements.filter(deposit));
+*/
+/////////////////////////////////////////////////
+//flat and flatMap method
+/////////////////////////////////////////////////
+//flat method
+const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(arr.flat());
+
+const arrDeep = [[[1, 2], 3], [[4, 5], 6], 7, 8];
+console.log(arrDeep.flat(2)); //goes 2 levels deep
+
+//take object arrays and put into an array of arrays
+const accountMovements = accounts.map(acc => acc.movements);
+console.log(accountMovements);
+//put into single array with no layers
+const allMovements = accountMovements.flat();
+console.log(allMovements);
+//add everything in array
+const overallBalance = allMovements.reduce((acc, mov) => acc + mov, 0);
+console.log(overallBalance);
+
+//chaining all methods above
+const overallBalance1 = accounts
+  .map(acc => acc.movements)
+  .flat()
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(overallBalance1);
+
+//flatMap -method returns a new array formed by applying a given callback function to each element of the array, and then flattening the result by one level.  It is identical to a map() followed by a flat() of depth 1, but slightly more efficient than calling those two methods separately.
+const overallBalance2 = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(overallBalance2);
