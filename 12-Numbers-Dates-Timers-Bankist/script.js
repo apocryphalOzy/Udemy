@@ -327,7 +327,7 @@ console.log((2.7).toFixed(0)); //decimal places 3 and is convert to string
 console.log((2.7).toFixed(3)); //2.700 and is a string
 console.log((2.345).toFixed(2)); //2.35 and is a string
 console.log(+(2.345).toFixed(2)); //convert back to a number
-*/
+
 /////////////////////////////////////////////////
 //Remainder Operator
 /////////////////////////////////////////////////
@@ -355,3 +355,35 @@ labelBalance.addEventListener("click", function () {
     if (i % 3 == 0) row.style.backgroundColor = "blue";
   });
 });
+*/
+/////////////////////////////////////////////////
+//Working with BigInt
+/////////////////////////////////////////////////
+//Numbers are represented internally as 64 bits. That means there are exactly 64 ones or zeros to represent any given number
+console.log(2 ** 53 - 1); //biggest number that JS can represent in the name space
+console.log(Number.MAX_SAFE_INTEGER);
+console.log(2 ** 53 + 1);
+//adding an 'n' to the end of a very large number turns the number into a BIGINT number
+console.log(123482374892349802389479823489892375n); //bigint number
+//same result with bigint function
+console.log(BigInt(123482374892349802389479823489892375));
+
+//operations with bigInts
+console.log(10000n + 10000n);
+console.log(198298321492329384289348923n * 100000000000n);
+//you cant mix bigInts with regular numbers
+const huge = 19023489238948923n;
+const num = 23;
+//console.log(huge * num); //Cannot mix BigInt and other types, use explicit conversions
+console.log(huge * BigInt(num)); //437540252495825229n
+//there are exceptions to this
+console.log(20n > 15); //true
+console.log(20n === 20); //false. these two numbers have a different primitive types
+console.log(typeof 20n); //bigInt
+console.log(typeof 20); //number
+console.log(20n == "20"); //true
+console.log(huge + " is REALLY big!!!!!!");
+
+//divisions bigInts
+console.log(10n / 3n); //returns closest bigInt - 3n
+console.log(10 / 3); //3.3333333333333335
