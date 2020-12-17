@@ -285,7 +285,7 @@ console.log(Number.isNaN(23 / 0)); //false
 console.log(Number.isFinite(+"20x")); //false
 console.log(Number.isInteger(+"20x")); //false
 console.log(Number.isInteger(20)); //true
-*/
+
 /////////////////////////////////////////////////
 //Math and Rounding
 /////////////////////////////////////////////////
@@ -327,3 +327,31 @@ console.log((2.7).toFixed(0)); //decimal places 3 and is convert to string
 console.log((2.7).toFixed(3)); //2.700 and is a string
 console.log((2.345).toFixed(2)); //2.35 and is a string
 console.log(+(2.345).toFixed(2)); //convert back to a number
+*/
+/////////////////////////////////////////////////
+//Remainder Operator
+/////////////////////////////////////////////////
+console.log(5 % 2); //remainder of 1
+console.log(5 / 2); //5 = 2 * 2 + 1
+console.log(8 % 3); //2
+console.log(8 / 3); //8 = 2 * 3 + 2
+
+//determining even or odd numbers
+//even numbers, the remainder is 0
+console.log(6 % 2); // 0
+console.log(6 / 2); // 3
+//odd numbers, the remainder is odd
+console.log(7 % 2); //1
+console.log(7 / 2); //3.5
+
+const isEven = (N) => N % 2 === 0;
+console.log(isEven(8)); //true - even
+console.log(isEven(514)); //true -even
+console.log(isEven(23)); //false - odd
+
+labelBalance.addEventListener("click", function () {
+  [...document.querySelectorAll(".movements__row")].forEach(function (row, i) {
+    if (i % 2 === 0) row.style.backgroundColor = "orangered";
+    if (i % 3 == 0) row.style.backgroundColor = "blue";
+  });
+});
