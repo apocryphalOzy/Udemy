@@ -61,9 +61,12 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-const displayMovements = function (movements) {
+const displayMovements = function (movements, sort = false) {
   containerMovements.innerHTML = '';
-  movements.forEach(function (mov, i) {
+
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+
+  movs.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
     const html = `
       <div class="movements__row">
@@ -126,7 +129,7 @@ const updateUI = function (acc) {
   calcDisplaySummary(acc);
 };
 
-// Event Handler
+// Event Handlers
 let currentAccount;
 btnLogin.addEventListener('click', function (e) {
   //Prevent form from submitting
@@ -175,6 +178,47 @@ btnTransfer.addEventListener('click', function (e) {
     //Update UI
     updateUI(currentAccount);
   }
+});
+
+btnLoan.addEventListener('click', function (e) {
+  e.preventDefault();
+  const amount = Number(inputLoanAmount.value);
+
+  if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
+    //add movement
+    currentAccount.movements.push(amount);
+
+    //Update UI
+    updateUI(currentAccount);
+  }
+  inputLoanAmount.value = '';
+});
+
+btnClose.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  if (
+    inputCloseUsername.value === currentAccount.username &&
+    Number(inputClosePin.value) === currentAccount.pin
+  ) {
+    const index = accounts.findIndex(
+      acc => acc.username === currentAccount.username
+    );
+
+    //Delete Account
+    accounts.splice(index, 1);
+
+    //Hide UI
+    containerApp.style.opacity = 0;
+  }
+  inputCloseUsername.value = inputClosePin.value = '';
+});
+
+let sorted = false;
+btnSort.addEventListener('click', function (e) {
+  e.preventDefault();
+  displayMovements(currentAccount.movements, !sorted);
+  sorted = !sorted;
 });
 
 /////////////////////////////////////////////////
@@ -358,7 +402,7 @@ console.log(totalDepositsUSD);
 
 
 /////////////////////////////////////////////////
-//Find Method
+//Find Method - AFTER CHALLENGE 3
 /////////////////////////////////////////////////
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 //find method is used to retrieve one element of an array based on a condition.
@@ -370,4 +414,143 @@ console.log(accounts);
 
 const account = accounts.find(acc => acc.owner === 'Jessica Davis');
 console.log(account);
+
+
+/////////////////////////////////////////////////
+//some and every method
+/////////////////////////////////////////////////
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+console.log(movements);
+//checks equality
+console.log(movements.includes(-130));
+
+//checks some condition
+console.log(movements.some(mov => mov > 5000));
+console.log(movements.some(mov => mov > 1500));
+console.log(movements.some(mov => mov === -130));
+console.log(movements.some(mov => mov === -200));
+
+//EVERY method - every only returns true if all of the elements in the array satisfy the condition that we pass in
+console.log(movements.every(mov => mov > 0));
+console.log(account4.movements.every(mov => mov > 0));
+
+//separate callback
+const deposit = mov => mov > 0;
+console.log(movements.some(deposit));
+console.log(movements.every(deposit));
+console.log(movements.filter(deposit));
+
+/////////////////////////////////////////////////
+//flat and flatMap method
+/////////////////////////////////////////////////
+//flat method
+const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(arr.flat());
+
+const arrDeep = [[[1, 2], 3], [[4, 5], 6], 7, 8];
+console.log(arrDeep.flat(2)); //goes 2 levels deep
+
+//take object arrays and put into an array of arrays
+const accountMovements = accounts.map(acc => acc.movements);
+console.log(accountMovements);
+//put into single array with no layers
+const allMovements = accountMovements.flat();
+console.log(allMovements);
+//add everything in array
+const overallBalance = allMovements.reduce((acc, mov) => acc + mov, 0);
+console.log(overallBalance);
+
+//chaining all methods above
+const overallBalance1 = accounts
+  .map(acc => acc.movements)
+  .flat()
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(overallBalance1);
+
+//flatMap -method returns a new array formed by applying a given callback function to each element of the array, and then flattening the result by one level.  It is identical to a map() followed by a flat() of depth 1, but slightly more efficient than calling those two methods separately.
+const overallBalance2 = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(overallBalance2);
+
+/////////////////////////////////////////////////
+//sorting method
+/////////////////////////////////////////////////
+
+//sorting strings
+const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
+//sort mutates original array
+console.log(owners.sort());
+console.log(owners);
+
+//sorting numbers
+//sort method does sorting based on strings
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+console.log(movements.sort());
+
+//return < 0  then A will be before B (returning -1 means keep order)
+// return > 0 then B will be before A (returning 1 means we switch order)
+movements.sort((a, b) => {
+  //sorting in ascending order
+  if (a > b) {
+    return 1;
+  }
+  if (a < b) {
+    return -1;
+  }
+});
+console.log(movements);
+movements.sort((a, b) => {
+  //sorting in descending order
+  if (a > b) {
+    return -1;
+  }
+  if (a < b) {
+    return 1;
+  }
+});
+console.log(movements);
+
+//improving our sort algorithm above
+//if a > b then a - b would be something positive
+//if a < b then a - b would be something negative
+//if a and b are the same(equal to zero) then the position of values will remain unchanged
+movements.sort((a, b) => a - b); //ascending order - bottom up
+console.log(`Ascending Algo: ${movements}`);
+movements.sort((a, b) => b - a); //descending order - top down
+console.log(`Descending Algo: ${movements}`);
+
+/////////////////////////////////////////////////
+//ways to create and fill arrays
+/////////////////////////////////////////////////
+
+//creates new array with 7 empty elements
+const x = new Array(7);
+console.log(x);
+//fills array and mutates the original array
+// x.fill(1); output- [1,1,1,1,1,1,1]
+
+//we can specify a begin parameter
+x.fill(1, 3, 5); //output - [empty x 3, 1, 1, empty x 2]
+console.log(x);
+
+//can mutate already created arrays
+const arr = [1, 2, 3, 4, 5, 6, 7];
+arr.fill(23, 2, 6); //fill with 23 at position 2 to 6
+console.log(arr);
+
+//Array.from()
+const y = Array.from({ length: 7 }, () => 1);
+console.log(y); //output- [1,1,1,1,1,1,1]
+
+const z = Array.from({ length: 7 }, (_, i) => i + 1); //remember _ is a throwaway variable because we dont use it
+console.log(z); //output - [1, 2, 3, 4, 5, 6, 7]
+
+labelBalance.addEventListener('click', function () {
+  const movementsUI = Array.from(
+    document.querySelectorAll('.movements__value'),
+    el => Number(el.textContent.replace('₤', ''))
+  );
+  console.log(movementsUI);
+});
 */
