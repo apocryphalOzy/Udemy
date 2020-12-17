@@ -402,7 +402,7 @@ console.log(totalDepositsUSD);
 
 
 /////////////////////////////////////////////////
-//Find Method
+//Find Method - AFTER CHALLENGE 3
 /////////////////////////////////////////////////
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 //find method is used to retrieve one element of an array based on a condition.
@@ -519,7 +519,7 @@ movements.sort((a, b) => a - b); //ascending order - bottom up
 console.log(`Ascending Algo: ${movements}`);
 movements.sort((a, b) => b - a); //descending order - top down
 console.log(`Descending Algo: ${movements}`);
-*/
+
 /////////////////////////////////////////////////
 //ways to create and fill arrays
 /////////////////////////////////////////////////
@@ -553,3 +553,4 @@ labelBalance.addEventListener('click', function () {
   );
   console.log(movementsUI);
 });
+*/
