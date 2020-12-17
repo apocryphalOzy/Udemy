@@ -355,7 +355,7 @@ labelBalance.addEventListener("click", function () {
     if (i % 3 == 0) row.style.backgroundColor = "blue";
   });
 });
-*/
+
 /////////////////////////////////////////////////
 //Working with BigInt
 /////////////////////////////////////////////////
@@ -387,3 +387,42 @@ console.log(huge + " is REALLY big!!!!!!");
 //divisions bigInts
 console.log(10n / 3n); //returns closest bigInt - 3n
 console.log(10 / 3); //3.3333333333333335
+*/
+/////////////////////////////////////////////////
+//Creating Dates
+/////////////////////////////////////////////////
+// Create a date
+const now = new Date();
+console.log(now); //logs our current date
+//parse the date
+console.log(new Date("Thu Dec 17 2020 13:42:56"));
+console.log(new Date("December 24, 2015"));
+console.log(new Date(account1.movementsDates[0]));
+
+console.log(new Date(2037, 10, 19, 15, 23, 5)); //month year in JS is zero based
+console.log(new Date(2037, 10, 33)); //dec 03 - goes into next month
+console.log(new Date(0));
+console.log(new Date(3 * 24 * 60 * 60 * 1000)); //convert from days to milleseconds
+
+//working with dates
+const future = new Date(2037, 10, 19, 15, 23, 5);
+console.log(future);
+console.log(future.getFullYear());
+console.log(future.getMonth());
+console.log(future.getDate());
+console.log(future.getDay()); //day of the week - thursday
+console.log(future.getHours());
+console.log(future.getMinutes());
+console.log(future.getSeconds());
+console.log(future.toISOString()); //international standard date
+//get time stamp for date since jan 1st 1970 - when unix time started
+//ms that has passed since jan 1 1970
+console.log(future.getTime());
+console.log(new Date(2142285785000));
+//time stamp for current date
+console.log(Date.now());
+console.log(new Date(1608242280369));
+
+//set different dates with methods
+future.setFullYear(2040);
+console.log(future); //Mon Nov 19 2040
