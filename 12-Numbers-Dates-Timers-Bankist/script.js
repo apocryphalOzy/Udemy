@@ -183,6 +183,10 @@ currentAccount = account1;
 updateUI(currentAccount);
 containerApp.style.opacity = 100;
 
+//experimenting with API
+const now = new Date();
+labelDate.textContent = new Intl.DateTimeFormat("en-US").format(now);
+
 btnLogin.addEventListener("click", function (e) {
   // Prevent form from submitting
   e.preventDefault();
@@ -253,14 +257,16 @@ btnLoan.addEventListener("click", function (e) {
     amount > 0 &&
     currentAccount.movements.some((mov) => mov >= amount * 0.1)
   ) {
-    // Add movement
-    currentAccount.movements.push(amount);
+    setTimeout(function () {
+      // Add movement
+      currentAccount.movements.push(amount);
 
-    //add loan date
-    currentAccount.movementsDates.push(new Date().toISOString());
+      //add loan date
+      currentAccount.movementsDates.push(new Date().toISOString());
 
-    // Update UI
-    updateUI(currentAccount);
+      // Update UI
+      updateUI(currentAccount);
+    }, 2500);
   }
   inputLoanAmount.value = "";
 });
@@ -470,7 +476,7 @@ console.log(new Date(1608242280369));
 //set different dates with methods
 future.setFullYear(2040);
 console.log(future); //Mon Nov 19 2040
-*/
+
 /////////////////////////////////////////////////
 //Operations with Dates
 /////////////////////////////////////////////////
@@ -482,3 +488,27 @@ const CalcDaysPassed = (date1, date2) =>
 
 const days1 = CalcDaysPassed(new Date(2037, 3, 14), new Date(2037, 3, 24));
 console.log(days1);
+*/
+/////////////////////////////////////////////////
+//Timers: setTimeout and setInterval
+/////////////////////////////////////////////////
+
+//set Timeout
+const ingredients = ["olives", "spinach"];
+
+const pizzaTimer = setTimeout(
+  (ing1, ing2) => console.log(`Here is your pizza with ${ing1} and ${ing2}`),
+  3000,
+  ...ingredients
+);
+console.log("Waiting....");
+
+if (ingredients.includes("spinach")) {
+  clearTimeout(pizzaTimer);
+}
+
+//set Interval
+setInterval(function () {
+  const now = new Date();
+  console.log(now);
+}, 1000);
