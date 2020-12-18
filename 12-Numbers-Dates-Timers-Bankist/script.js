@@ -155,6 +155,19 @@ const updateUI = function (acc) {
 // Event handlers
 let currentAccount;
 
+//FAKE ALWAYS LOGGED IN
+currentAccount = account1;
+updateUI(currentAccount);
+containerApp.style.opacity = 100;
+
+const now = new Date();
+const day = now.getDate();
+const month = now.getMonth() + 1;
+const year = now.getFullYear();
+const hour = now.getHours();
+const min = now.getMinutes();
+labelDate.textContent = `${day}/${month}/${year}, ${hour}:${min}`;
+
 btnLogin.addEventListener("click", function (e) {
   // Prevent form from submitting
   e.preventDefault();
@@ -387,7 +400,7 @@ console.log(huge + " is REALLY big!!!!!!");
 //divisions bigInts
 console.log(10n / 3n); //returns closest bigInt - 3n
 console.log(10 / 3); //3.3333333333333335
-*/
+
 /////////////////////////////////////////////////
 //Creating Dates
 /////////////////////////////////////////////////
@@ -426,3 +439,4 @@ console.log(new Date(1608242280369));
 //set different dates with methods
 future.setFullYear(2040);
 console.log(future); //Mon Nov 19 2040
+*/
